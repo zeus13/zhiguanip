@@ -1,0 +1,39 @@
+.row {
+	position: relative;
+	line-height: .5rem;
+	padding: .15rem;
+	font-size: .26rem;
+	border-bottom: 1px solid #cacaca;
+}
+.row-2 {
+	position: relative;
+	line-height: .5rem;
+	padding: .15rem;
+	font-size: .26rem;
+	border-bottom: 1px solid #cacaca;
+}
+.row-2::after {
+	content: '';
+	display: inline-block;
+	width: .2rem;
+	height: .2rem;
+	border-right: 1px solid #888888;
+	border-bottom: 1px solid #888888;
+	transform: rotate(-45deg);
+	float: right;
+	margin-top: .15rem;
+	margin-right: .15rem;
+}
+.input {
+	width: 100%;
+	padding-left: 1.2rem;
+	line-height: .5rem;
+	border: none;
+	outline: none;
+}
+.row-title {
+	position: absolute;
+	top: .15rem;
+	left: .15;
+	font
+}

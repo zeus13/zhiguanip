@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../js/rem2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/base.css">
+    <link type="text/css" rel="stylesheet" href="../css/release.css">
+  <title>发布作品</title>
+</head>
+<body>
+  <div id="app">
+    <div class="content">
+      <div class="row">
+        <div class="row-title">作品名称</div>
+        <input type="text" class="input" placeholder="请输入作品名称">
+      </div>
+      <div class="row">
+        <div class="row-title">作者署名</div>
+        <input type="text" class="input" placeholder="请输入作者名字">
+      </div>
+      <div class="row-2">
+        <span>作品类别</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data () {
+      return {
+
+      }
+    },
+    methods: {
+
+    }
+  });
+</script>

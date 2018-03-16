@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../js/rem2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/base.css">
+    <link type="text/css" rel="stylesheet" href="../css/classify.css">
+    <link type="text/css" rel="stylesheet" href="../css/domestic.css">
+  <title>国内版权</title>
+  <!-- TODO 页面顶部点击作品分类，如国内版权、海外等，使用这个页面 -->
+</head>
+<body>
+  <div id="app" class="classify clearfix" :class="{'isScroll': isShow}">
+    <div class="content">
+      <!-- <div class="header">
+        <div class="header-img"></div>
+      </div> -->
+      <!-- <div class="top">
+        <input type="text" class="input">
+        <span class="btn-search" @click="clickSearch">搜索</span>
+        <div class="btn-screen" @click="clickScreen"></div>
+      </div> -->
+      <!-- <div class="top2">
+        <div class=""><span class="sort">排序</span></div>
+        <input type="text" class="input2" placeholder="输入作者名字、作品名称">
+        <span class="btn-search">搜索</span>
+        <div class="btn-screen" @click="clickScreen"></div>
+      </div> -->
+      <div class="ad">
+        <img src="../images/apicloud-bg.png" class="bg-img">
+      </div>
+      <div class="top2">
+        <input type="text" class="input2" placeholder="输入作者名字、作品名称">
+        <span class="btn-search2" @click="clickSearch">搜索</span>
+        <div class="btn-screen2" @click="clickScreen"></div>
+      </div>
+      <!-- 列表 -->
+      <div class="goods-list2">
+        <div class="list-item" @click="gotoPage()">
+          <div class="goods-img"><img src="../images/pic01.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜追凶</p>
+            <!-- <p class="author2">东野圭吾</p> -->
+            <p class="goods-subtitle">《白夜追凶》是王伟执导的中国首部硬汉派悬疑推理剧，由潘粤明、王泷正、梁缘、吕晓霖、尹姝贻等领衔主演[1]  。
+  该剧讲述了刑侦支队队长关宏峰为了洗脱弟弟关宏宇的杀人罪名，一路破获多起案件的故事[2]  。
+  该剧于2017年8月30日在优酷视频独家播放[3]  ，同年11月，美国视频网站网飞（Netflix）获得该剧的海外发行权，计划在全球190多个国家和地区上线[4]  。</p>
+            <div class="goods-row goods-tags clearfix">
+              <span class="author2">东野圭吾</span>
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30-40万字</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div class="goods-img"><img src="../images/pic01.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜行</p>
+            <p class="author2">东野圭吾</p>
+            <p class="goods-subtitle">图书勋章日!40万种自营图书叠勋章券可享300减160,更享白条三期免息!</p>
+            <div class="goods-row goods-tags">
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30万字</span>
+            </div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="goods-img"><img src="../images/pic01.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜行</p>
+            <p class="author2">东野圭吾</p>
+            <p class="goods-subtitle">图书勋章日!40万种自营图书叠勋章券可享300减160,更享白条三期免息!</p>
+            <div class="goods-row goods-tags">
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30万字</span>
+            </div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="goods-img"><img src="../images/pic01.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜行</p>
+            <p class="author2">东野圭吾</p>
+            <p class="goods-subtitle">图书勋章日!40万种自营图书叠勋章券可享300减160,更享白条三期免息!</p>
+            <div class="goods-row goods-tags">
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30万字</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 弹出层 -->
+    <div class="mask" v-show="isShow">
+      <div class="close-mask" @click="closeMask"></div>
+      <div class="mask-content" v-show="isShow">
+        <div>
+          <p class="search-row">作品题材</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked == 1}" @click="choseTheme(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 2}" @click="choseTheme(2)">社科</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 3}" @click="choseTheme(3)">文学</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 4}" @click="choseTheme(4)">少儿</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 5}" @click="choseTheme(5)">历史</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 6}" @click="choseTheme(6)">生活</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 7}" @click="choseTheme(7)">励志</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 8}" @click="choseTheme(8)">财经</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 9}" @click="choseTheme(9)">青春</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 10}" @click="choseTheme(10)">都市</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 11}" @click="choseTheme(11)">悬疑</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 12}" @click="choseTheme(12)">军事</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 13}" @click="choseTheme(13)">玄幻</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 14}" @click="choseTheme(14)">科幻</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">作品种类别</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 1}" @click="choseCategory(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 2}" @click="choseCategory(2)">原创</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 3}" @click="choseCategory(3)">再版</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">作品类型</p>
+          <div class="list-tags">
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 1}" @click="choseType(1)">全部</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 2}" @click="choseType(2)">长篇著作</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 3}" @click="choseType(3)">短片精选集</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 4}" @click="choseType(4)">文集</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 5}" @click="choseType(5)">其他</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">作品年代</p>
+          <div class="list-tags">
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 1}" @click="choseYear(1)">全部</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 2}" @click="choseYear(2)">近现代</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 3}" @click="choseYear(3)">当代</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">授权状态</p>
+          <div class="list-tags">
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked5 == 1}" @click="choseWarrant(1)">全部</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked5 == 2}" @click="choseWarrant(2)">待授权</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked5 == 3}" @click="choseWarrant(3)">已授权</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">是否完结</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked6 == 1}" @click="choseIsEnd(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked6 == 2}" @click="choseIsEnd(2)">是</span>
+            <span class="list-tags-item" :class="{clicked :isClicked6 == 3}" @click="choseIsEnd(3)">否</span>
+          </div>
+        </div>
+        <div class="">
+          <p class="search-row">字数</p>
+          <div class="list-tags">
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 1}" @click="choseTotal(1)">全部</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 2}" @click="choseTotal(2)">10万以内</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 3}" @click="choseTotal(3)">10-20万</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 4}" @click="choseTotal(4)">20-30万</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 5}" @click="choseTotal(5)">30-40万</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 6}" @click="choseTotal(6)">40-50万</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 7}" @click="choseTotal(7)">50万以上</span>
+          </div>
+        </div>
+
+        <div class="footer2">
+          <span class="footer-item bcolor-1">重置</span>
+          <span class="footer-item bcolor-2">搜索</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data () {
+      return {
+        isClicked: 1,
+        isClicked2: 1,
+        isClicked3: 1,
+        isClicked4: 1,
+        isClicked5: 1,
+        isClicked6: 1,
+        isClicked7: 1,
+        isShow: false
+      }
+    },
+    methods: {
+      choseTheme (val) {
+        this.isClicked = val
+      },
+      choseCategory (val) {
+        this.isClicked2 = val
+      },
+      choseType (val) {
+        this.isClicked3 = val
+      },
+      choseYear (val) {
+        this.isClicked4 = val
+      },
+      choseWarrant (val) {
+        this.isClicked5 = val
+      },
+      choseIsEnd (val) {
+        this.isClicked6 = val
+      },
+      choseTotal (val) {
+        this.isClicked7 = val
+      },
+      clickScreen (val) {
+        this.isShow = true
+      },
+      cancel () {
+        this.isShow = false
+      },
+      submit () {
+        alert('你点击了查询确认')
+      },
+      clickSearch () {
+        alert('点击了搜索')
+      },
+      gotoPage () {
+        return window.location.href="goodsInfo.html"
+      },
+      closeMask () {
+        this.isShow = false
+      }
+    }
+  });
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../js/rem2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/base.css">
+    <link type="text/css" rel="stylesheet" href="../css/user.css">
+  <title>个人中心</title>
+</head>
+<body>
+  <div id="app">
+    <div class="top-bg">
+      <div class="head-img"><img src="../images/gril.jpg" class="img"></div>
+      <div class="user-title">这是一位女性读者</div>
+      <div class="btn-binding">绑定用户</div>
+    </div>
+
+    <div>
+      <div class="row clearfix"><img src="../images/icon-1.png" class="icons"><span class="ml-06">作品专区</span></div>
+      <div class="row clearfix"><img src="../images/icon-2.png" class="icons"><span class="ml-06">发布文章</span></div>
+      <div class="row clearfix"><img src="../images/icon-3.png" class="icons"><span class="ml-06">我的收藏</span></div>
+      <div class="row clearfix"><img src="../images/icon-1.png" class="icons"><span class="ml-06">版权消息</span></div>
+      <div class="row clearfix"><img src="../images/icon-1.png" class="icons"><span class="ml-06">高级认证</span></div>
+      <div class="row clearfix"><img src="../images/icon-4.png" class="icons"><span class="ml-06">我的好友</span></div>
+    </div>
+
+    <div><h2>第二种效果</h2></div> 
+    <div>
+      <div class="row-2 clearfix"  @click="clickRow(1)">
+        <img src="../images/icon-1.png" class="icons">
+        <span class="ml-06">作品专区</span>
+      </div>
+      <div class="list" v-show="isWriting">
+        <div class="list-item">
+          <img src="../images/icon-2.png" class="icons-2">
+          <div class="list-item-title">发布文章</div>
+        </div>
+        <div class="list-item">
+          <img src="../images/icon-1.png" class="icons-2">
+          <div class="list-item-title">我的作品</div>
+        </div>
+        <div class="list-item">
+          <img src="../images/icon-3.png" class="icons-2">
+          <div class="list-item-title">我的收藏</div>
+        </div>
+        <div class="list-item">
+          <img src="../images/icon-1.png" class="icons-2">
+          <div class="list-item-title">版权消息</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+<script>
+ var app = new Vue({
+  el: '#app',
+  data () {
+    return {
+      isWriting: true,
+      isAdmin: false
+    }
+  },
+  methods: {
+    clickRow (val) {
+      var self = this
+      if (val == 1) {
+        self.isWriting = !self.isWriting
+        self.isAdmin = false
+      } else if (val == 2) {
+        self.isAdmin = !self.isAdmin
+        self.isWriting = false
+      }
+    }
+  }
+ });
+</script>
+
