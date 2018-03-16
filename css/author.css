@@ -1,4 +1,4 @@
-/*国内图书*/
+/* 作者编剧 */
 .close-mask {
   position: absolute;
   top: 0;
@@ -81,6 +81,9 @@
   height: .9rem;
   top:0;
   padding: .15rem;
+}
+.goods-list2 {
+  /*padding: .15rem 0;*/
 }
 .img2 {
   position: absolute;

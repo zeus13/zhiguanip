@@ -21,23 +21,6 @@
   background: url('../images/logo.png') no-repeat;
   background-size: 100%;
 }
-.sort {
-  position: absolute;
-  top: .2rem;
-  left: .2rem;
-  font-size: .28rem;
-  color:#d81e06;
-}
-.sort::after {
-  content: '';
-  display: inline-block;
-  width: .3rem;
-  height: .3rem;
-  background: url('../images/sort.png') no-repeat;
-  background-size: 100%;
-  position: absolute;
-  top: .05rem;
-}
 .header-img2 {
   position: absolute;
   top: .25rem;
@@ -45,9 +28,6 @@
   height: .5rem;
   background: url('../images/logo.png') no-repeat;
   background-size: 100%;
-}
-.logo {
-  width: 100%;
 }
 .top {
   position: relative;
@@ -97,31 +77,6 @@
   background: url('../images/screening.png') no-repeat;
   background-size: 100%;
 }
-.pop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.17);
-  z-index: 10;
-}
-.pop-content {
-  float: right;
-  width: 85%;
-  height: 100%;
-  padding-bottom: 1rem;
-  background: white;
-  overflow-y: auto;
-  overflow-x: hidden;
-  z-index: 11;
-}
-.tags-title {
-  margin: .15rem .3rem;
-  padding: .1rem 0;
-  border-bottom: .5px solid #cacaca;
-  font-size: .28rem;
-}
 .list-tags {
   display: flex;
   flex-direction: row;
@@ -137,30 +92,6 @@
   text-align: center;
   font-size: .2rem;
 }
-.width-1 {
-  width: 1.3rem;
-}
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-.footer-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-.footer-row-item {
-  flex-grow: 1;
-  padding: .15rem;
-  text-align: center;
-}
-.goods-list {
-  padding: .15rem .25rem;
-}
 .list-item {
   position: relative;
   width: 100%;
@@ -174,12 +105,6 @@
   left: 0;
   width: 1.3rem;
   height: 1.4rem;
-}
-.goods-content {
-  width: 100%;
-  padding-left: 1.5rem;
-  padding-bottom: .15rem;
-  /*border-bottom: 1px solid #cacaca;*/
 }
 .goods-row {
   /*width: 4.4rem;*/
@@ -202,11 +127,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-.author {
-  display: inline-block;
-  width: 1.8rem;
-  font-size: .2rem;
 }
 .clicked {
   border: 1px solid #d81e06;

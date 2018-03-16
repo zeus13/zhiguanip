@@ -9,11 +9,140 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script type="text/javascript" src="../js/rem2.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/base.css">
-  <title>导航页</title>
+    <link type="text/css" rel="stylesheet" href="../css/classify.css">
+    <link type="text/css" rel="stylesheet" href="../css/author.css">
+  <title>国内版权</title>
+  <!-- TODO 页面顶部点击作品分类，如国内版权、海外等，使用这个页面 -->
 </head>
 <body>
-  <div id="app">
+  <div id="app" class="classify clearfix" :class="{'isScroll': isShow}">
+    <div class="content">
+      <!-- <div class="ad">
+        <img src="../images/apicloud-bg.png" class="bg-img">
+      </div> -->
+      <div class="top2">
+        <input type="text" class="input2" placeholder="输入想要查询的作者名称">
+        <span class="btn-search2" @click="clickSearch">搜索</span>
+        <div class="btn-screen2" @click="clickScreen"></div>
+      </div>
+      <!-- 列表 -->
+      <div class="goods-list2">
+        <div class="list-item">
+          <div class="goods-img"><img src="../images/pic12.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜追凶</p>
+            <!-- <p class="author2">东野圭吾</p> -->
+            <p class="goods-subtitle">《白夜追凶》是王伟执导的中国首部硬汉派悬疑推理剧，由潘粤明、王泷正、梁缘、吕晓霖、尹姝贻等领衔主演[1]  。
+  该剧讲述了刑侦支队队长关宏峰为了洗脱弟弟关宏宇的杀人罪名，一路破获多起案件的故事[2]  。
+  该剧于2017年8月30日在优酷视频独家播放[3]  ，同年11月，美国视频网站网飞（Netflix）获得该剧的海外发行权，计划在全球190多个国家和地区上线[4]  。</p>
+            <div class="goods-row goods-tags clearfix">
+              <span class="author2">东野圭吾</span>
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30-40万字</span>
+            </div>
+          </div>
+        </div>
 
+        <div class="list-item">
+          <div class="goods-img"><img src="../images/pic01.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜行</p>
+            <p class="author2">东野圭吾</p>
+            <p class="goods-subtitle">图书勋章日!40万种自营图书叠勋章券可享300减160,更享白条三期免息!</p>
+            <div class="goods-row goods-tags">
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30万字</span>
+            </div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="goods-img"><img src="../images/pic01.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜行</p>
+            <p class="author2">东野圭吾</p>
+            <p class="goods-subtitle">图书勋章日!40万种自营图书叠勋章券可享300减160,更享白条三期免息!</p>
+            <div class="goods-row goods-tags">
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30万字</span>
+            </div>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="goods-img"><img src="../images/pic01.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜行</p>
+            <p class="author2">东野圭吾</p>
+            <p class="goods-subtitle">图书勋章日!40万种自营图书叠勋章券可享300减160,更享白条三期免息!</p>
+            <div class="goods-row goods-tags">
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30万字</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 弹出层 -->
+    <div class="mask" v-show="isShow">
+      <div class="close-mask" @click="closeMask"></div>
+      <div class="mask-content" v-show="isShow">
+        <div>
+          <p class="search-row">地区</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked == 1}" @click="choseArea(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 2}" @click="choseArea(2)">大陆</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 3}" @click="choseArea(3)">港台</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 4}" @click="choseArea(4)">欧美</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 5}" @click="choseArea(5)">日韩</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 6}" @click="choseArea(6)">其他</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">年龄</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 1}" @click="choseYear(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 2}" @click="choseYear(2)">50前</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 3}" @click="choseYear(3)">50后</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 4}" @click="choseYear(4)">60后</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 5}" @click="choseYear(5)">70后</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 6}" @click="choseYear(6)">80后</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 7}" @click="choseYear(7)">90后</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 8}" @click="choseYear(8)">00后</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">性别</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked3 == 1}" @click="choseSex(1)">男</span>
+            <span class="list-tags-item" :class="{clicked :isClicked3 == 2}" @click="choseSex(2)">女</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">类型</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked4 == 1}" @click="choseType(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked4 == 2}" @click="choseType(2)">作者</span>
+            <span class="list-tags-item" :class="{clicked :isClicked4 == 3}" @click="choseType(3)">编剧</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">是否推荐</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked6 == 1}" @click="choseRecommend(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked6 == 2}" @click="choseRecommend(2)">是</span>
+          </div>
+        </div>
+
+        <div class="footer2">
+          <span class="footer-item bcolor-1">重置</span>
+          <span class="footer-item bcolor-2">搜索</span>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
@@ -22,14 +151,50 @@
     el: '#app',
     data () {
       return {
-
+        isClicked: 1,
+        isClicked2: 1,
+        isClicked3: 1,
+        isClicked4: 1,
+        isClicked5: 1,
+        isClicked6: 1,
+        isClicked7: 1,
+        isShow: false
       }
     },
     methods: {
-
+      choseArea (val) {
+        this.isClicked = val
+      },
+      choseYear (val) {
+        this.isClicked2 = val
+      },
+      choseSex (val) {
+        this.isClicked3 = val
+      },
+      choseType (val) {
+        this.isClicked4 = val
+      },
+      choseRecommend (val) {
+        this.isClicked6 = val
+      },
+      clickScreen (val) {
+        this.isShow = true
+      },
+      cancel () {
+        this.isShow = false
+      },
+      submit () {
+        alert('你点击了查询确认')
+      },
+      clickSearch () {
+        alert('点击了搜索')
+      },
+      gotoPage () {
+        return window.location.href="goodsInfo.html"
+      },
+      closeMask () {
+        this.isShow = false
+      }
     }
   });
 </script>
-<style>
-
-</style>

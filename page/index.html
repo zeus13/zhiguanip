@@ -17,6 +17,7 @@
     <div class="row" @click="gotoUser">个人中心</div>
     <div class="row" @click="gotoGoods">作品分类</div>
     <div class="row" @click="gotoDomestic">国内作品</div>
+    <div class="row" @click="gotoAuthor">作者编剧</div>
     <div class="row" @click="gotoGoods">发布作品</div>
   </div>
 </body>
@@ -38,6 +39,9 @@
       },
       gotoDomestic () {
         return window.location.href="domestic.html"
+      },
+      gotoAuthor () {
+        return window.location.href="author.html"
       }
     }
   });
