@@ -10,8 +10,8 @@
     <script type="text/javascript" src="../js/rem2.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/base.css">
     <!-- <link type="text/css" rel="stylesheet" href="../css/classify.css"> -->
-    <link type="text/css" rel="stylesheet" href="../css/domestic.css">
-  <title>国内版权</title>
+    <link type="text/css" rel="stylesheet" href="../css/movies.css">
+  <title>影视改编</title>
   <!-- TODO 页面顶部点击作品分类，如国内版权、海外等，使用这个页面 -->
 </head>
 <body>
@@ -89,45 +89,39 @@
           <p class="search-row">作品题材</p>
           <div class="list-tags">
             <span class="list-tags-item" :class="{clicked :isClicked == 1}" @click="choseTheme(1)">全部</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 2}" @click="choseTheme(2)">社科</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 3}" @click="choseTheme(3)">文学</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 4}" @click="choseTheme(4)">少儿</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 5}" @click="choseTheme(5)">历史</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 6}" @click="choseTheme(6)">生活</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 7}" @click="choseTheme(7)">励志</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 8}" @click="choseTheme(8)">财经</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 9}" @click="choseTheme(9)">青春</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 10}" @click="choseTheme(10)">都市</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 11}" @click="choseTheme(11)">悬疑</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 12}" @click="choseTheme(12)">军事</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 13}" @click="choseTheme(13)">玄幻</span>
-            <span class="list-tags-item" :class="{clicked :isClicked == 14}" @click="choseTheme(14)">科幻</span>
-          </div>
-        </div>
-        <div>
-          <p class="search-row">作品种类别</p>
-          <div class="list-tags">
-            <span class="list-tags-item" :class="{clicked :isClicked2 == 1}" @click="choseCategory(1)">全部</span>
-            <span class="list-tags-item" :class="{clicked :isClicked2 == 2}" @click="choseCategory(2)">原创</span>
-            <span class="list-tags-item" :class="{clicked :isClicked2 == 3}" @click="choseCategory(3)">再版</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 2}" @click="choseTheme(2)">古装</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 3}" @click="choseTheme(3)">年代</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 4}" @click="choseTheme(4)">青春</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 5}" @click="choseTheme(5)">都市</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 6}" @click="choseTheme(6)">军事</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 7}" @click="choseTheme(7)">玄幻</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 8}" @click="choseTheme(8)">惊悚</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 9}" @click="choseTheme(9)">穿越</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 10}" @click="choseTheme(10)">刑侦</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 11}" @click="choseTheme(11)">生活</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 12}" @click="choseTheme(12)">传奇</span>
           </div>
         </div>
         <div>
           <p class="search-row">作品类型</p>
           <div class="list-tags">
             <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 1}" @click="choseType(1)">全部</span>
-            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 2}" @click="choseType(2)">长篇著作</span>
-            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 3}" @click="choseType(3)">短片精选集</span>
-            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 4}" @click="choseType(4)">文集</span>
-            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 5}" @click="choseType(5)">其他</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 2}" @click="choseType(2)">长篇小说</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 3}" @click="choseType(3)">中篇小说</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 4}" @click="choseType(4)">短篇小说</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 5}" @click="choseType(5)">漫画</span>
           </div>
         </div>
         <div>
-          <p class="search-row">作品年代</p>
+          <p class="search-row">授权权利</p>
           <div class="list-tags">
             <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 1}" @click="choseYear(1)">全部</span>
-            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 2}" @click="choseYear(2)">近现代</span>
-            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 3}" @click="choseYear(3)">当代</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 2}" @click="choseYear(2)">全版权</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 3}" @click="choseYear(3)">电影</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 2}" @click="choseYear(2)">电视剧</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 3}" @click="choseYear(3)">网剧</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 2}" @click="choseYear(2)">网大</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 3}" @click="choseYear(3)">影视</span>
           </div>
         </div>
         <div>

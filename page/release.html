@@ -21,10 +21,92 @@
       </div>
       <div class="row">
         <div class="row-title">作者署名</div>
-        <input type="text" class="input" placeholder="请输入作者名字">
+        <input type="text" class="input2" placeholder="请输入作者名字">
+        <div class="checkbox" @click="clickCheckBox">
+          <img :src="isCheckBox ? '../images/icon-7.png' : '../images/icon-6.png'" class="checkbox-img">我是作者本人
+        </div>
       </div>
       <div class="row-2">
-        <span>作品类别</span>
+        <span>作品分类</span>
+      </div>
+      <div class="tags padding-015choseType">
+        <span class="tags-item" :class="{tagsChecked: classify == 1}" @click="choseclassify(1)">国内图书</span>
+        <span class="tags-item" :class="{tagsChecked: classify == 2}" @click="choseclassify(2)">港台海外图书</span>
+        <span class="tags-item" :class="{tagsChecked: classify == 3}" @click="choseclassify(3)">影视改编剧本</span>
+      </div>
+
+      <!-- 国内图书选择内容 -->
+      <div class="tags-content" v-show="classify == 1">
+        <div class="row-tags">
+          <div class="row-tags-title">作品类型</div>
+          <div class="tags">
+            <span class="tags-item" :class="{tagsChecked: type == 1}" @click="choseType(1)">长篇著作</span>
+            <span class="tags-item" :class="{tagsChecked: type == 2}" @click="choseType(2)">短篇精选集</span>
+            <span class="tags-item" :class="{tagsChecked: type == 3}" @click="choseType(3)">文集</span>
+            <span class="tags-item" :class="{tagsChecked: type == 4}" @click="choseType(4)">其他</span>
+          </div>
+        </div>
+        <div class="row-tags">
+          <div class="row-tags-title">作品类别</div>
+          <div class="tags">
+            <span class="tags-item" :class="{tagsChecked: category == 1}" @click="choseCategory(1)">原创</span>
+            <span class="tags-item" :class="{tagsChecked: category == 2}" @click="choseCategory(2)">再版</span>
+          </div>
+        </div>
+        <div class="row-tags">
+          <div class="row-tags-title">作品题材</div>
+          <div class="tags">
+            <span class="tags-item" :class="{tagsChecked: theme == 1}" @click="choseTheme(1)">社科</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 2}" @click="choseTheme(2)">少儿</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 3}" @click="choseTheme(3)">历史</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 4}" @click="choseTheme(4)">生活</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 5}" @click="choseTheme(5)">励志</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 6}" @click="choseTheme(6)">财经</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 7}" @click="choseTheme(7)">青春</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 8}" @click="choseTheme(8)">都市</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 9}" @click="choseTheme(9)">悬疑</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 10}" @click="choseTheme(10)">军事</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 11}" @click="choseTheme(11)">玄幻</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 12}" @click="choseTheme(12)">科幻</span>
+            <span class="tags-item" :class="{tagsChecked: theme == 13}" @click="choseTheme(13)">文学</span>
+          </div>
+        </div>
+        <div class="row-tags">
+          <div class="row-tags-title">作品年代</div>
+          <div class="tags">
+            <span class="tags-item" :class="{tagsChecked: year == 1}" @click="choseYear(1)">近现代</span>
+            <span class="tags-item" :class="{tagsChecked: year == 2}" @click="choseYear(2)">当代</span>
+          </div>
+        </div>
+        <div class="row-tags">
+          <div class="row-tags-title">授权状态</div>
+          <div class="tags">
+            <span class="tags-item" :class="{tagsChecked: warrant == 1}" @click="choseWarrant(1)">待授权</span>
+            <span class="tags-item" :class="{tagsChecked: warrant == 2}" @click="choseWarrant(2)">已授权</span>
+          </div>
+        </div>
+        <div class="row-tags">
+          <div class="row-tags-title">是否完结</div>
+          <div class="tags">
+            <span class="tags-item" :class="{tagsChecked: end == 1}" @click="choseIsEnd(1)">是</span>
+            <span class="tags-item" :class="{tagsChecked: end == 2}" @click="choseIsEnd(2)">否</span>
+          </div>
+        </div>
+        <div class="row-tags">
+          <div class="row-tags-title">作品字数</div>
+          <div class="tags">
+            <span class="tags-item" :class="{tagsChecked: total == 1}" @click="choseTotal(1)">10万以内</span>
+            <span class="tags-item" :class="{tagsChecked: total == 2}" @click="choseTotal(2)">10-20万</span>
+            <span class="tags-item" :class="{tagsChecked: total == 3}" @click="choseTotal(3)">20-30万以内</span>
+            <span class="tags-item" :class="{tagsChecked: total == 4}" @click="choseTotal(4)">30-40万</span>
+            <span class="tags-item" :class="{tagsChecked: total == 5}" @click="choseTotal(5)">40-50万</span>
+            <span class="tags-item" :class="{tagsChecked: total == 6}" @click="choseTotal(6)">50万以上</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tags-content" v-show="classify == 2">
+        2222
       </div>
     </div>
   </div>
@@ -35,11 +117,48 @@
     el: "#app",
     data () {
       return {
-
+        isCheckBox: false,
+        classify: 0,
+        type: 0,
+        category:0,
+        theme: 0,
+        year: 0,
+        warrant: 0,
+        end: 0,
+        total: 0
       }
     },
     methods: {
-
+      clickCheckBox () {
+        this.isCheckBox = !this.isCheckBox
+      },
+      choseclassify (val) {
+        this.classify = val
+      },
+      choseType (val) {
+        this.type = val
+      },
+      choseCategory (val) {
+        this.category = val
+      },
+      choseTheme (val) {
+        this.theme = val
+      },
+      choseYear (val) {
+        this.year = val
+      },
+      choseWarrant (val) {
+        this.warrant = val
+      },
+      choseIsEnd (val) {
+        this.end = val
+      },
+      choseTotal (val) {
+        this.total = val
+      }
     }
   });
 </script>
+<style>
+  
+</style>

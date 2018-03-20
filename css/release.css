@@ -19,7 +19,7 @@
 	height: .2rem;
 	border-right: 1px solid #888888;
 	border-bottom: 1px solid #888888;
-	transform: rotate(-45deg);
+	transform: rotate(45deg);
 	float: right;
 	margin-top: .15rem;
 	margin-right: .15rem;
@@ -31,9 +31,58 @@
 	border: none;
 	outline: none;
 }
+.input2 {
+	width: 65%;
+	padding-left: 1.2rem;
+	padding-right: .1rem;
+	line-height: .5rem;
+	border: none;
+	outline: none;
+}
+.checkbox {
+	float: right;
+	width: 2rem;
+	font-size: .26rem;
+}
+.checkbox-img {
+	width: .38rem;
+	height: .38rem;
+	margin-top: -.1rem;
+	vertical-align: middle;
+}
 .row-title {
 	position: absolute;
 	top: .15rem;
-	left: .15;
-	font
+	left: .15rem;
 }
+.tags {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	/*padding: .15rem;*/
+	border-bottom: 1px solid #cacaca;
+}
+.tags-item {
+	flex-grow: 1;
+	text-align: center;
+	margin: .15rem;
+	padding: .1rem;
+	border: 1px solid #cacaca;
+	color: #808080;
+	border-radius: 3px;
+}
+.tagsChecked {
+	border: 1px solid #d81e06;
+	color: #d81e06;
+}
+.tags-content {
+	margin: 0 .15rem;
+	border-left: 1px solid #cacaca;
+	border-right: 1px solid #cacaca;
+	border-bottom: 1px solid #cacaca;
+}
+.row-tags {
+	padding: .15rem;
+
+}
+.padding-015 { padding: .15rem; }

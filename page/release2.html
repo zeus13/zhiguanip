@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script src="../js/vue.min.js"></script>
+    <script type="text/javascript" src="../js/rem2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/base.css">
+  <title>发布作品</title>
+</head>
+<body>
+  <div id="app">
+    <div class="content">
+      <div class="row">
+        <div class="row-title">作品名称</div>
+        <input type="text" class="input" placeholder="请输入作品名称">
+      </div>
+      <div class="row">
+        <div class="row-title">作品署名</div>
+        <input type="text" class="input input-signature" placeholder="请输入作品名称">
+        <div class="signature">
+          <img src="../images/icon-6.png" class="signature-img">
+          <span>是作者本人</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-title">作品分类</div>
+        <div class="select" @click="ClickSelect">
+          <span class="select-item">请选择</span>
+          <div class="select-arrow"></div>
+        </div>
+        <div class="drop" v-if="isSelect">
+          <div v-for="(item, index) in select" :key="index" class="drop-item">{{item}}</div>
+        </div>
+        <!-- <div v-for="(item, index) in select" :key="index">
+          <span class="select-item" v-if="isSelect">{{item}}{{index}}</span>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data () {
+      return {
+        isCheckBox: false,
+        classify: 0,
+        type: 0,
+        category:0,
+        theme: 0,
+        year: 0,
+        warrant: 0,
+        end: 0,
+        total: 0,
+        isSelect: false,
+        select: ['请选择', '国内图书', '港台海外', '影视改编']
+      }
+    },
+    methods: {
+      ClickSelect () {
+        this.isSelect = !this.isSelect
+      },
+      clickCheckBox () {
+        this.isCheckBox = !this.isCheckBox
+      },
+      choseclassify (val) {
+        this.classify = val
+      },
+      choseType (val) {
+        this.type = val
+      },
+      choseCategory (val) {
+        this.category = val
+      },
+      choseTheme (val) {
+        this.theme = val
+      },
+      choseYear (val) {
+        this.year = val
+      },
+      choseWarrant (val) {
+        this.warrant = val
+      },
+      choseIsEnd (val) {
+        this.end = val
+      },
+      choseTotal (val) {
+        this.total = val
+      }
+    }
+  });
+</script>
+<style>
+.row {
+  position: relative;
+  padding: .15rem;
+  font-size: .24rem;
+  border-bottom: 1px solid #cacaca;
+  line-height: .5rem;
+}
+.row-title {
+  position: absolute;
+  top: .16rem;
+  left: .15rem;
+}
+.input {
+  width: 100%;
+  padding-left: 1.2rem;
+  padding-right: .1rem;
+  line-height: .5rem;
+  outline: none;
+  border: none;
+}
+.input-signature {
+  width: 70%;
+}
+.signature {
+  position: absolute;
+  top: .18rem;
+  right: .15rem;
+}
+.signature-img {
+  position: relative;
+  top: .05rem;
+  width: .3rem;
+  height: .3rem;
+}
+.select-row {
+  position: relative;
+  padding: .15rem;
+}
+.select {
+  width: 4.8rem;
+  height: .6rem;
+  margin-left: 1.2rem;
+  text-align: right;
+  border: 1px solid #cacaca;
+}
+.select-arrow {
+  position: absolute;
+  top: .35rem;
+  right: .5rem;
+  width: .2rem;
+  height: .2rem;
+  transform: rotate(-45deg);
+  border-right: 1px solid #cacaca;
+  border-bottom: 1px solid #cacaca;
+}
+.select-item {
+  position: relative;
+  top: .05rem;
+  left: -.5rem;
+}
+.drop {
+  position: absolute;
+  width: 75%;
+  margin-left: 1.2rem;
+  margin-right: .12rem;
+  padding-right: .15rem;
+  text-align: right;
+  border: 1px solid #cacaca;
+  background: white;
+}
+.drop-item {
+  padding: .05rem 0;
+}
+</style>

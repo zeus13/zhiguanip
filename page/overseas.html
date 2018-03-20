@@ -10,8 +10,8 @@
     <script type="text/javascript" src="../js/rem2.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/base.css">
     <!-- <link type="text/css" rel="stylesheet" href="../css/classify.css"> -->
-    <link type="text/css" rel="stylesheet" href="../css/domestic.css">
-  <title>国内版权</title>
+    <link type="text/css" rel="stylesheet" href="../css/overseas.css">
+  <title>港台海外</title>
   <!-- TODO 页面顶部点击作品分类，如国内版权、海外等，使用这个页面 -->
 </head>
 <body>
@@ -105,14 +105,6 @@
           </div>
         </div>
         <div>
-          <p class="search-row">作品种类别</p>
-          <div class="list-tags">
-            <span class="list-tags-item" :class="{clicked :isClicked2 == 1}" @click="choseCategory(1)">全部</span>
-            <span class="list-tags-item" :class="{clicked :isClicked2 == 2}" @click="choseCategory(2)">原创</span>
-            <span class="list-tags-item" :class="{clicked :isClicked2 == 3}" @click="choseCategory(3)">再版</span>
-          </div>
-        </div>
-        <div>
           <p class="search-row">作品类型</p>
           <div class="list-tags">
             <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 1}" @click="choseType(1)">全部</span>
@@ -123,11 +115,13 @@
           </div>
         </div>
         <div>
-          <p class="search-row">作品年代</p>
+          <p class="search-row">所属地区</p>
           <div class="list-tags">
-            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 1}" @click="choseYear(1)">全部</span>
-            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 2}" @click="choseYear(2)">近现代</span>
-            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 3}" @click="choseYear(3)">当代</span>
+            <span class="list-tags-item" :class="{clicked :isClicked4 == 1}" @click="choseArea(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked4 == 2}" @click="choseArea(2)">港台</span>
+            <span class="list-tags-item" :class="{clicked :isClicked4 == 3}" @click="choseArea(3)">欧美</span>
+            <span class="list-tags-item" :class="{clicked :isClicked4 == 4}" @click="choseArea(4)">日韩</span>
+            <span class="list-tags-item" :class="{clicked :isClicked4 == 5}" @click="choseArea(5)">其他</span>
           </div>
         </div>
         <div>
@@ -193,7 +187,7 @@
       choseType (val) {
         this.isClicked3 = val
       },
-      choseYear (val) {
+      choseArea (val) {
         this.isClicked4 = val
       },
       choseWarrant (val) {

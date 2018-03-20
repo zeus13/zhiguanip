@@ -17,8 +17,12 @@
     <div class="row" @click="gotoUser">个人中心</div>
     <div class="row" @click="gotoGoods">作品分类</div>
     <div class="row" @click="gotoDomestic">国内作品</div>
+    <div class="row" @click="gotoOverseas">港台海外</div>
+    <div class="row" @click="gotoMovies">影视改编</div>
     <div class="row" @click="gotoAuthor">作者编剧</div>
-    <div class="row" @click="gotoGoods">发布作品</div>
+    <div class="row" @click="gotoAuthorInfo">作者介绍</div>
+    <div class="row" @click="gotoRelease">发布作品1</div>
+    <div class="row" @click="gotoRelease2">发布作品2</div>
   </div>
 </body>
 </html>
@@ -42,6 +46,21 @@
       },
       gotoAuthor () {
         return window.location.href="author.html"
+      },
+      gotoAuthorInfo () {
+        return window.location.href="authorInfo.html"
+      },
+      gotoOverseas () {
+        return window.location.href="overseas.html"
+      },
+      gotoMovies () {
+        return window.location.href="movies.html"
+      },
+      gotoRelease () {
+        return window.location.href="release.html"
+      },
+      gotoRelease2 () {
+        return window.location.href="release2.html"
       }
     }
   });

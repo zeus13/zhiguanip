@@ -117,17 +117,15 @@
   /*color: #576b95;*/
   font-size: .28rem;
 }
-.goods-subtitle {
+/*.goods-subtitle {
   width: 4.4rem;
-  /*height: .6rem;*/
-  /*margin-bottom: .1rem;*/
   padding-bottom: .3rem;
   font-size: .2rem;
   color: #888888;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
+}*/
 .clicked {
   border: 1px solid #d81e06;
   border-radius: 5px;
