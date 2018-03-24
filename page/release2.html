@@ -6,40 +6,300 @@
     <meta content="yes" name="apple-mobile-web-app-capable"/>
     <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
     <meta content="telephone=no" name="format-detection"/>
-    <script src="../js/vue.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script type="text/javascript" src="../js/rem2.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/base.css">
+    <link type="text/css" rel="stylesheet" href="../css/release2.css">
   <title>发布作品</title>
 </head>
 <body>
   <div id="app">
     <div class="content">
+      <div class="ad">
+        <img src="../images/apicloud-bg.png" class="bg-img">
+      </div>
       <div class="row">
         <div class="row-title">作品名称</div>
-        <input type="text" class="input" placeholder="请输入作品名称">
+        <input type="text" class="input" placeholder="请输入作品名称" v-model="title">
       </div>
       <div class="row">
         <div class="row-title">作品署名</div>
-        <input type="text" class="input input-signature" placeholder="请输入作品名称">
-        <div class="signature">
-          <img src="../images/icon-6.png" class="signature-img">
+        <input type="text" class="input input-signature" placeholder="请输入作品署名" v-model="signature">
+        <div class="signature" @click="clickSignature">
+          <img :src="isSignature ? '../images/icon-7.png' : '../images/icon-6.png'" class="signature-img">
           <span>是作者本人</span>
         </div>
       </div>
       <div class="row">
         <div class="row-title">作品分类</div>
-        <div class="select" @click="ClickSelect">
-          <span class="select-item">请选择</span>
+        <div class="select" @click="clickClassify">
+          <span class="select-item">{{classify}}</span>
           <div class="select-arrow"></div>
         </div>
-        <div class="drop" v-if="isSelect">
-          <div v-for="(item, index) in select" :key="index" class="drop-item">{{item}}</div>
+        <div class="drop" v-if="isClassify">
+          <div v-for="(iClassify, index) in classifys" :key="index" class="drop-item" @click="choseClassify(iClassify, index)">{{iClassify}}</div>
         </div>
-        <!-- <div v-for="(item, index) in select" :key="index">
-          <span class="select-item" v-if="isSelect">{{item}}{{index}}</span>
-        </div> -->
       </div>
+      <!-- 国内图书 -->
+      <div v-if="classify == '国内图书'" class="zoomA">
+        <div class="row">
+          <div class="row-title">作品类型</div>
+          <div class="select" @click="clickType">
+            <span class="select-item">{{type}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isType">
+          <div v-for="(iType, index) in types" :key="index" class="drop-item" @click="choseType(iType, index)">{{iType}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">作品类别</div>
+          <div class="select" @click="clickCategory">
+            <span class="select-item">{{category}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isCategory">
+          <div v-for="(iCategory, index) in categorys" :key="index" class="drop-item" @click="choseCategory(iCategory, index)">{{iCategory}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">作品题材</div>
+          <div class="select" @click="clickTheme">
+            <span class="select-item">{{theme}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isTheme">
+          <div v-for="(iTheme, index) in themes" :key="index" class="drop-item" @click="choseTheme(iTheme, index)">{{iTheme}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">作品年代</div>
+          <div class="select" @click="clickYear">
+            <span class="select-item">{{year}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isYear">
+          <div v-for="(iYear, index) in years" :key="index" class="drop-item" @click="choseYear(iYear, index)">{{iYear}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">授权状态</div>
+          <div class="select" @click="clickWarrant">
+            <span class="select-item">{{warrant}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isWarrant">
+          <div v-for="(iWarrant, index) in warrants" :key="index" class="drop-item" @click="choseWarrant(iWarrant, index)">{{iWarrant}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">是否完结</div>
+          <div class="select" @click="clickEnd">
+            <span class="select-item">{{end}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isEnd">
+          <div v-for="(iEnd, index) in ends" :key="index" class="drop-item" @click="choseEnd(iEnd, index)">{{iEnd}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">字数</div>
+          <div class="select" @click="clickTotal">
+            <span class="select-item">{{total}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isTotal">
+          <div v-for="(iTotal, index) in totals" :key="index" class="drop-item" @click="choseTotal(iTotal, index)">{{iTotal}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 港台海外 -->
+      <div v-if="classify == '港台海外图书'" class="zoomA">
+        <div class="row">
+          <div class="row-title">所属地区</div>
+          <div class="select" @click="clickArea">
+            <span class="select-item">{{area}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isArea">
+          <div v-for="(iArea, index) in areas" :key="index" class="drop-item" @click="choseArea(iArea, index)">{{iArea}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">作品类型</div>
+          <div class="select" @click="clickType">
+            <span class="select-item">{{type}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isType">
+          <div v-for="(iType, index) in types" :key="index" class="drop-item" @click="choseType(iType, index)">{{iType}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">作品题材</div>
+          <div class="select" @click="clickTheme">
+            <span class="select-item">{{theme}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isTheme">
+          <div v-for="(iTheme, index) in themes" :key="index" class="drop-item" @click="choseTheme(iTheme, index)">{{iTheme}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">授权状态</div>
+          <div class="select" @click="clickWarrant">
+            <span class="select-item">{{warrant}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isWarrant">
+          <div v-for="(iWarrant, index) in warrants" :key="index" class="drop-item" @click="choseWarrant(iWarrant, index)">{{iWarrant}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">是否完结</div>
+          <div class="select" @click="clickEnd">
+            <span class="select-item">{{end}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isEnd">
+          <div v-for="(iEnd, index) in ends" :key="index" class="drop-item" @click="choseEnd(iEnd, index)">{{iEnd}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">字数</div>
+          <div class="select" @click="clickTotal">
+            <span class="select-item">{{total}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isTotal">
+          <div v-for="(iTotal, index) in totals" :key="index" class="drop-item" @click="choseTotal(iTotal, index)">{{iTotal}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 影视改编剧本 -->
+      <div v-if="classify == '影视改编剧本'" class="zoomA">
+        <div class="row">
+          <div class="row-title">作品类型</div>
+          <div class="select" @click="clickType">
+            <span class="select-item">{{type}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isType">
+          <div v-for="(iType, index) in types2" :key="index" class="drop-item" @click="choseType(iType, index)">{{iType}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">影视授权</div>
+          <div class="select" @click="clickFilm">
+            <span class="select-item">{{film}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isFilm">
+          <div v-for="(iFilm, index) in films" :key="index" class="drop-item" @click="choseFilm(iFilm, index)">{{iFilm}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">作品类别</div>
+          <div class="select" @click="clickCategory">
+            <span class="select-item">{{category}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isCategory">
+          <div v-for="(iCategory, index) in categorys" :key="index" class="drop-item" @click="choseCategory(iCategory, index)">{{iCategory}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">作品题材</div>
+          <div class="select" @click="clickTheme">
+            <span class="select-item">{{theme}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isTheme">
+          <div v-for="(iTheme, index) in themes2" :key="index" class="drop-item" @click="choseTheme(iTheme, index)">{{iTheme}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">授权状态</div>
+          <div class="select" @click="clickWarrant">
+            <span class="select-item">{{warrant}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isWarrant">
+          <div v-for="(iWarrant, index) in warrants" :key="index" class="drop-item" @click="choseWarrant(iWarrant, index)">{{iWarrant}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">是否完结</div>
+          <div class="select" @click="clickEnd">
+            <span class="select-item">{{end}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isEnd">
+          <div v-for="(iEnd, index) in ends" :key="index" class="drop-item" @click="choseEnd(iEnd, index)">{{iEnd}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">字数</div>
+          <div class="select" @click="clickTotal">
+            <span class="select-item">{{total}}</span>
+            <div class="select-arrow"></div>
+          </div>
+          <div class="drop" v-if="isTotal">
+          <div v-for="(iTotal, index) in totals" :key="index" class="drop-item" @click="choseTotal(iTotal, index)">{{iTotal}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 共用输入区域 -->
+      <div v-if="classify != '请先选择作品的分类'">
+        <div class="row">
+          <div class="row-title">作者介绍</div>
+          <div class="row-textarea">
+            <textarea name="" id="" v-model="introduce"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">内容介绍</div>
+          <div class="row-textarea">
+            <textarea name="" id="" v-model="content"></textarea>
+          </div>
+        </div>
+        <div class="row" v-if="classify == '影视改编剧本'">
+          <div class="row-title">故事梗概</div>
+          <div class="row-textarea">
+            <textarea name="" id="" v-model="synopsis"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">作品目录</div>
+          <div class="row-textarea">
+            <textarea name="" id="" v-model="menu"></textarea>
+          </div>
+        </div>
+        <div class="row" v-if="classify == '影视改编剧本'">
+          <div class="row-title">人物小传</div>
+          <div class="row-textarea">
+            <textarea name="" id="" v-model="life"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-title">卖点分析</div>
+          <div class="row-textarea">
+            <textarea name="" id="" v-model="sell"></textarea>
+          </div>
+        </div>
+        <div class="row border-none">
+          <div class="row-title">宣传语</div>
+          <div class="row-textarea">
+            <textarea name="" id="" v-model="disseminate"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="btn-release" @click="submit">确认发布</div>
     </div>
+    <div class="mask" v-show="isMaskShow" @click="closeMask"></div>
   </div>
 </body>
 </html>
@@ -48,125 +308,199 @@
     el: "#app",
     data () {
       return {
-        isCheckBox: false,
-        classify: 0,
-        type: 0,
-        category:0,
-        theme: 0,
-        year: 0,
-        warrant: 0,
-        end: 0,
-        total: 0,
-        isSelect: false,
-        select: ['请选择', '国内图书', '港台海外', '影视改编']
+        isSignature: false, // 是否是作者本人
+        isMaskShow: false, // 控制遮罩
+        isClassify: false, // 作品分类
+        classifys: ['国内图书', '港台海外图书', '影视改编剧本'],
+        classify: '请先选择作品的分类',
+        isType: false, // 控制作品类型选项显示
+        types: ['长篇著作', '短篇精选集', '文集', '其他'],
+        type: '请选择作品类型',
+        isCategory: false, // 控制作品类别选项显示
+        categorys: ['原创', '再版'],
+        category: '请选择作品题材',
+        isTheme: false, // 控制作品题材选项显示
+        themes: ['社科', '少儿', '历史', '生活', '励志', '财经', '青春', '都市', '悬疑', '军事', '玄幻', '科幻', '文学'],
+        theme: '请选择作品题材',
+        isYear: false, // 控制作品年代选项显示
+        years: ['近现代', '当代'],
+        year: '请选择作品年代',
+        isWarrant: false, // 控制作品授权状态选项显示
+        warrants: ['待授权', '已授权'],
+        warrant: '授权状态',
+        isEnd: false, // 控制作品是否完结选项显示
+        ends: ['是', '否'],
+        end: '请选择本书是否已完结',
+        isTotal: false, // 控制字数选项显示
+        totals: ['10万以内', '10-20万', '20-30万', '30-40万', '40-50万', '50万以上'],
+        total: '请选择作品总字数',
+        /* 以下是港台海外 */
+        isArea: false, // 控制所属地区
+        areas: ['港台', '欧美', '日韩', '其他'],
+        area: '请选择作品所属地区',
+        types2: ['长篇小说', '中篇小说', '短篇小说', '漫画'],
+        isFilm: false,
+        films: ['全版权', '电影', '电视剧', '网剧', '网大', '影视'],
+        film: '请选择影视授权方',
+        themes2: ['古装', '年代', '青春', '都市', '军事', '玄幻', '惊悚', '穿越', '刑侦', '生活', '传奇'],
+        introduce: '', // 作者介绍
+        content: '', // 内容介绍
+        synopsis: '', // 故事梗概
+        life: '',
+        menu: '', // 目录
+        sell: '', // 卖点
+        disseminate: '', // 宣传语
+        title: '',
+        signature: '',
+
       }
     },
     methods: {
-      ClickSelect () {
-        this.isSelect = !this.isSelect
+      clickSignature () {
+        this.isSignature = !this.isSignature
       },
-      clickCheckBox () {
-        this.isCheckBox = !this.isCheckBox
+      closeMask () {
+        this.isMaskShow = false
+        this.isClassify = false
+        this.isType = false
+        this.isCategory = false
+        this.isTheme = false
+        this.isYear = false
+        this.isWarrant =false
+        this.isEnd = false
+        this.isTotal = false
+        this.isArea = false
+        this.isFilm = false
       },
-      choseclassify (val) {
+      clickClassify () { // 弹出下拉框
+        this.isMaskShow = true
+        this.isClassify = !this.isClassify
+      },
+      choseClassify (val, num) {
         this.classify = val
+        this.closeMask()
+        console.log(val)
+        console.log(num)
       },
-      choseType (val) {
+      clickType () {
+        this.isMaskShow = true
+        this.isType = !this.isType
+      },
+      choseType (val, num) {
         this.type = val
+        this.closeMask()
+        console.log(val)
+        console.log(num)
       },
-      choseCategory (val) {
+      clickCategory () {
+        this.isMaskShow = true
+        this.isCategory = !this.isCategory
+      },
+      choseCategory (val, num) {
         this.category = val
+        this.closeMask()
       },
-      choseTheme (val) {
+      clickTheme () {
+        this.isMaskShow = true
+        this.isTheme = !this.isTheme
+      },
+      choseTheme (val, num) {
         this.theme = val
+        this.closeMask()
       },
-      choseYear (val) {
+      clickYear () {
+        this.isMaskShow = true
+        this.isYear = ! this.isYear
+      },
+      choseYear (val, num) {
         this.year = val
+        this.closeMask()
       },
-      choseWarrant (val) {
+      clickWarrant () {
+        this.isMaskShow = true
+        this.isWarrant = !this.isWarrant
+      },
+      choseWarrant (val, num) {
         this.warrant = val
+        this.closeMask()
       },
-      choseIsEnd (val) {
+      clickEnd () {
+        this.isMaskShow = true
+        this.isEnd = !this.isEnd
+      },
+      choseEnd (val, num) {
         this.end = val
+        this.closeMask()
       },
-      choseTotal (val) {
+      clickTotal () {
+        this.isMaskShow = true
+        this.isTotal = !this.isTotal
+      },
+      choseTotal (val, num) {
         this.total = val
+        this.closeMask()
+      },
+      clickArea () {
+        this.isMaskShow =true
+        this.isArea = !this.isArea
+      },
+      choseArea (val, num) {
+        this.area = val
+        this.closeMask()
+      },
+      clickFilm () {
+        this.isMaskShow = true
+        this.isFilm = !this.isFilm
+      },
+      choseFilm (val, num) {
+        this.film = val
+        this.closeMask()
+      },
+      submit () {
+        var self = this
+        if (self.title == '') {
+          return alert('请输入作品名称')
+        }
+        if (self.signature == '') {
+          return alert('请输入作品署名')
+        }
+
+        if (self.classify == '请先选择作品的分类') {
+          return alert('请先选择你所要发布作品的分类')
+        }
+        if (self.type == '请选择作品类型') {
+          return alert('请先选择作品类型')
+        }
+        if (self.category == '请先选择作品类别') {
+          return alert('请选择你所要发布作品的类别')
+        }
+        if (self.theme == '请选择作品题材') {
+          return alert('请选择作品题材')
+        }
+        if (self.year == '请选择作品年代') {
+          return alert('请选择作品年代')
+        }
+        if (self.warrant == '授权状态') {
+          return alert('请选择是否已授权')
+        }
+        if (self.end == '请选择本书是否已完结') {
+          return alert('请选择本书是否已完结')
+        }
+        if (self.total == '请选择作品总字数') {
+          return alert('请选择作品总字数')
+        }
+        if (self.area == '请选择作品所属地区' && self.classify == '港台海外图书') {
+          return alert('请选择作品所属地区')
+        }
+        if (self.film == '请选择影视授权方' && self.classify == '港台海外图书') {
+          return alert('请选择影视授权方')
+        }
+        console.log('作者介绍', self.introduce)
+        console.log('内容介绍', self.content)
+        console.log('作品目录')
+        console.log('卖点分析')
+        console.log('宣传语')
       }
     }
   });
 </script>
-<style>
-.row {
-  position: relative;
-  padding: .15rem;
-  font-size: .24rem;
-  border-bottom: 1px solid #cacaca;
-  line-height: .5rem;
-}
-.row-title {
-  position: absolute;
-  top: .16rem;
-  left: .15rem;
-}
-.input {
-  width: 100%;
-  padding-left: 1.2rem;
-  padding-right: .1rem;
-  line-height: .5rem;
-  outline: none;
-  border: none;
-}
-.input-signature {
-  width: 70%;
-}
-.signature {
-  position: absolute;
-  top: .18rem;
-  right: .15rem;
-}
-.signature-img {
-  position: relative;
-  top: .05rem;
-  width: .3rem;
-  height: .3rem;
-}
-.select-row {
-  position: relative;
-  padding: .15rem;
-}
-.select {
-  width: 4.8rem;
-  height: .6rem;
-  margin-left: 1.2rem;
-  text-align: right;
-  border: 1px solid #cacaca;
-}
-.select-arrow {
-  position: absolute;
-  top: .35rem;
-  right: .5rem;
-  width: .2rem;
-  height: .2rem;
-  transform: rotate(-45deg);
-  border-right: 1px solid #cacaca;
-  border-bottom: 1px solid #cacaca;
-}
-.select-item {
-  position: relative;
-  top: .05rem;
-  left: -.5rem;
-}
-.drop {
-  position: absolute;
-  width: 75%;
-  margin-left: 1.2rem;
-  margin-right: .12rem;
-  padding-right: .15rem;
-  text-align: right;
-  border: 1px solid #cacaca;
-  background: white;
-}
-.drop-item {
-  padding: .05rem 0;
-}
-</style>

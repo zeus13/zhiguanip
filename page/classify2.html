@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../js/rem2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/base.css">
+    <!-- <link type="text/css" rel="stylesheet" href="../css/classify.css"> -->
+    <link type="text/css" rel="stylesheet" href="../css/classify2.css">
+  <title>综合查询</title>
+  <!-- TODO 页面顶部点击作品分类，如国内版权、海外等，使用这个页面 -->
+</head>
+<body>
+  <div id="app" class="classify clearfix" :class="{'isScroll': isShow}">
+    <div class="content">
+      <div class="ad">
+        <img src="../images/apicloud-bg.png" class="bg-img">
+      </div>
+      <div class="top2">
+        <input type="text" class="input2" placeholder="输入作者名字、作品名称">
+        <span class="btn-search2" @click="clickSearch">搜索</span>
+        <!-- <div class="btn-screen2" @click="clickScreen"></div> -->
+      </div>
+      <div class="navi-row">
+        <span class="navi-tags" @click="clickNavi(1)" :class="{naviClicked: isNavi == 1}">国内图书</span>
+        <span class="navi-tags" @click="clickNavi(2)" :class="{naviClicked: isNavi == 2}">港台海外</span>
+        <span class="navi-tags" @click="clickNavi(3)" :class="{naviClicked: isNavi == 3}">影视改编</span>
+        <span class="navi-tags" @click="clickNavi(4)" :class="{naviClicked: isNavi == 4}">作者编剧</span>
+        <div class="navi-tags" @click="clickScreen">更多</div>
+      </div>
+      <!-- 列表 -->
+      <div class="goods-list2">
+        <div class="list-item">
+          <div class="goods-img"><img src="../images/pic01.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜追凶</p>
+            <!-- <p class="author2">东野圭吾</p> -->
+            <p class="goods-subtitle">
+              《白夜追凶》是王伟执导的中国首部硬汉派悬疑推理剧，由潘粤明、王泷正、梁缘、吕晓霖、尹姝贻等领衔主演[1]  。
+该剧讲述了刑侦支队队长关宏峰为了洗脱弟弟关宏宇的杀人罪名，一路破获多起案件的故事[2]  。
+该剧于2017年8月30日在优酷视频独家播放[3]  ，同年11月，美国视频网站网飞（Netflix）获得该剧的海外发行权，计划在全球190多个国家和地区上线
+            </p>
+            <div class="goods-row goods-tags clearfix">
+              <span class="author2">东野圭吾</span>
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30-40万字</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="list-item">
+          <div class="goods-img"><img src="../images/pic01.jpg" class="img2"></div>
+          <div class="goods-content2">
+            <p class="goods-row goods-title">白夜追凶</p>
+            <!-- <p class="author2">东野圭吾</p> -->
+            <p class="goods-subtitle">
+              《白夜追凶》是王伟执导的中国首部硬汉派悬疑推理剧，由潘粤明、王泷正、梁缘、吕晓霖、尹姝贻等领衔主演[1]  。
+该剧讲述了刑侦支队队长关宏峰为了洗脱弟弟关宏宇的杀人罪名，一路破获多起案件的故事[2]  。
+该剧于2017年8月30日在优酷视频独家播放[3]  ，同年11月，美国视频网站网飞（Netflix）获得该剧的海外发行权，计划在全球190多个国家和地区上线
+            </p>
+            <div class="goods-row goods-tags clearfix">
+              <span class="author2">东野圭吾</span>
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30-40万字</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 弹出层 -->
+<!--     <div class="mask" v-show="isShow">
+      <div class="close-mask" @click="closeMask"></div>
+      <div class="mask-content" v-show="isShow">
+        <div>
+          <p class="search-row">作品题材</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked == 1}" @click="choseTheme(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 2}" @click="choseTheme(2)">社科</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 3}" @click="choseTheme(3)">文学</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 4}" @click="choseTheme(4)">少儿</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 5}" @click="choseTheme(5)">历史</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 6}" @click="choseTheme(6)">生活</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 7}" @click="choseTheme(7)">励志</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 8}" @click="choseTheme(8)">财经</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 9}" @click="choseTheme(9)">青春</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 10}" @click="choseTheme(10)">都市</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 11}" @click="choseTheme(11)">悬疑</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 12}" @click="choseTheme(12)">军事</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 13}" @click="choseTheme(13)">玄幻</span>
+            <span class="list-tags-item" :class="{clicked :isClicked == 14}" @click="choseTheme(14)">科幻</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">作品种类别</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 1}" @click="choseCategory(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 2}" @click="choseCategory(2)">原创</span>
+            <span class="list-tags-item" :class="{clicked :isClicked2 == 3}" @click="choseCategory(3)">再版</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">作品类型</p>
+          <div class="list-tags">
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 1}" @click="choseType(1)">全部</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 2}" @click="choseType(2)">长篇著作</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 3}" @click="choseType(3)">短片精选集</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 4}" @click="choseType(4)">文集</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked3 == 5}" @click="choseType(5)">其他</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">作品年代</p>
+          <div class="list-tags">
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 1}" @click="choseYear(1)">全部</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 2}" @click="choseYear(2)">近现代</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked4 == 3}" @click="choseYear(3)">当代</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">授权状态</p>
+          <div class="list-tags">
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked5 == 1}" @click="choseWarrant(1)">全部</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked5 == 2}" @click="choseWarrant(2)">待授权</span>
+            <span class="list-tags-item tags-3" :class="{clicked :isClicked5 == 3}" @click="choseWarrant(3)">已授权</span>
+          </div>
+        </div>
+        <div>
+          <p class="search-row">是否完结</p>
+          <div class="list-tags">
+            <span class="list-tags-item" :class="{clicked :isClicked6 == 1}" @click="choseIsEnd(1)">全部</span>
+            <span class="list-tags-item" :class="{clicked :isClicked6 == 2}" @click="choseIsEnd(2)">是</span>
+            <span class="list-tags-item" :class="{clicked :isClicked6 == 3}" @click="choseIsEnd(3)">否</span>
+          </div>
+        </div>
+        <div class="">
+          <p class="search-row">字数</p>
+          <div class="list-tags">
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 1}" @click="choseTotal(1)">全部</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 2}" @click="choseTotal(2)">10万以内</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 3}" @click="choseTotal(3)">10-20万</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 4}" @click="choseTotal(4)">20-30万</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 5}" @click="choseTotal(5)">30-40万</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 6}" @click="choseTotal(6)">40-50万</span>
+            <span class="list-tags-item tags-2" :class="{clicked :isClicked7 == 7}" @click="choseTotal(7)">50万以上</span>
+          </div>
+        </div>
+
+        <div class="footer2">
+          <span class="footer-item bcolor-1">重置</span>
+          <span class="footer-item bcolor-2">搜索</span>
+        </div>
+      </div>
+    </div> -->
+    <!-- 新的弹出层 -->
+    <div v-if="isShow" class="pop">
+      <div v-show="isPop">
+        <div class="row" @click="gotoDomestic">国内图书</div>
+        <div class="row" @click="gotoOverseas">港台海外</div>
+        <div class="row" @click="gotoMovies">影视改编</div>
+        <div class="row" @click="gotoAuthor">作者编剧</div>
+        <div class="btn-back" @click="closePop">返&nbsp;&nbsp;&nbsp;回</div>
+      </div>
+      <div class="zoom" v-if="isDomestic">
+        <div class="back" @click="comeback">
+          <div class="back-arrow"></div>
+          <span class="back-title">返回</span>
+        </div>
+        <div class="zoom-top">国内图书</div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">作品题材</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(iTheme, index) in themes" :key="index" :class="{clicked:isClicked == index}" @click="clickTags('theme', index)">{{iTheme}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">作品类别</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(iCategory, index) in categorys" :key="index" :class="{clicked:isClicked2 == index}" @click="clickTags('category', index)">{{iCategory}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">作品类型</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(type, index) in types" :key="index" :class="{clicked:isClicked3 == index}" @click="clickTags('type', index)">{{type}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">作品年代</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(year, index) in years" :key="index" :class="{clicked:isClicked4 == index}" @click="clickTags('year', index)">{{year}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">授权状态</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(warrant, index) in warrants" :key="index" :class="{clicked:isClicked5 == index}" @click="clickTags('warrant', index)">{{warrant}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">是否完结</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(end, index) in ends" :key="index" :class="{clicked:isClicked6 == index}" @click="clickTags('end', index)">{{end}}</div>
+          </div>
+        </div>
+        <div class="zoom-row no-border">
+          <div class="zoom-row-title">字数</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(total, index) in totals" :key="index" :class="{clicked:isClicked7 == index}" @click="clickTags('total', index)">{{total}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 海外 -->
+      <div class="zoom" v-if="isOverseas">
+        <div class="back" @click="comeback">
+          <div class="back-arrow"></div>
+          <span class="back-title">返回</span>
+        </div>
+        <div class="zoom-top">港台海外</div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">作品题材</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(iTheme, index) in themes" :key="index" :class="{clicked:isClicked == index}" @click="clickTags('theme', index)">{{iTheme}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">作品类型</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(type, index) in types" :key="index" :class="{clicked:isClicked3 == index}" @click="clickTags('type', index)">{{type}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">所属地区</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(area, index) in areas" :key="index" :class="{clicked:isClicked8 == index}" @click="clickTags('area', index)">{{area}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">授权状态</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(warrant, index) in warrants" :key="index" :class="{clicked:isClicked5 == index}" @click="clickTags('warrant', index)">{{warrant}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">是否完结</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(end, index) in ends" :key="index" :class="{clicked:isClicked6 == index}" @click="clickTags('end', index)">{{end}}</div>
+          </div>
+        </div>
+        <div class="zoom-row no-border">
+          <div class="zoom-row-title">字数</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(total, index) in totals" :key="index" :class="{clicked:isClicked7 == index}" @click="clickTags('total', index)">{{total}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 影视改编 -->
+      <div class="zoom" v-if="isMovie">
+        <div class="back" @click="comeback">
+          <div class="back-arrow"></div>
+          <span class="back-title">返回</span>
+        </div>
+        <div class="zoom-top">影视改编</div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">作品题材</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(iTheme, index) in themes2" :key="index" :class="{clicked:isClicked == index}" @click="clickTags('theme', index)">{{iTheme}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">作品类型</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(type, index) in types2" :key="index" :class="{clicked:isClicked3 == index}" @click="clickTags('type', index)">{{type}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">影视授权</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(film, index) in films" :key="index" :class="{clicked:isClicked9 == index}" @click="clickTags('film', index)">{{film}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">授权状态</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(warrant, index) in warrants" :key="index" :class="{clicked:isClicked5 == index}" @click="clickTags('warrant', index)">{{warrant}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">是否完结</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(end, index) in ends" :key="index" :class="{clicked:isClicked6 == index}" @click="clickTags('end', index)">{{end}}</div>
+          </div>
+        </div>
+        <div class="zoom-row no-border">
+          <div class="zoom-row-title">字数</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(total, index) in totals" :key="index" :class="{clicked:isClicked7 == index}" @click="clickTags('total', index)">{{total}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 作者编剧 -->
+      <div class="zoom" v-if="isAuthor">
+        <div class="back" @click="comeback">
+          <div class="back-arrow"></div>
+          <span class="back-title">返回</span>
+        </div>
+        <div class="zoom-top">作者编剧</div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">地区</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(area, index) in areas2" :key="index" :class="{clicked:isClicked8 == index}" @click="clickTags('area', index)">{{area}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">年龄</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(old, index) in olds" :key="index" :class="{clicked:isClicked4 == index}" @click="clickTags('old', index)">{{old}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">性别</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(sex, index) in sexs" :key="index" :class="{clicked:isClicked10 == index}" @click="clickTags('sex', index)">{{sex}}</div>
+          </div>
+        </div>
+        <div class="zoom-row">
+          <div class="zoom-row-title">类型</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(type, index) in type3" :key="index" :class="{clicked:isClicked3 == index}" @click="clickTags('type', index)">{{type}}</div>
+          </div>
+        </div>
+        <div class="zoom-row no-border">
+          <div class="zoom-row-title">推荐</div>
+          <div class="zoom-row-tags">
+            <div class="zoom-row-tags-item" v-for="(recommend, index) in recommends" :key="index" :class="{clicked:isClicked11 == index}" @click="clickTags('recommend', index)">{{recommend}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="zoom-footer" v-show="!isPop">
+        <span class="zoom-footer-item bg-color-g" @click="reset">重置</span>
+        <span class="zoom-footer-item bg-color" @click="confirm">确认</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data () {
+      return {
+        isClicked: 0,
+        isClicked2: 0,
+        isClicked3: 0,
+        isClicked4: 0,
+        isClicked5: 0,
+        isClicked6: 0,
+        isClicked7: 0,
+        isClicked8: 0,
+        isClicked9: 0,
+        isClicked10: 0,
+        isClicked11: 0,
+        isShow: false,
+        isPop: true,
+        isDomestic: false,
+        isOverseas: false,
+        isMovie: false,
+        isAuthor: false,
+        themes: ['全部', '社科', '少儿', '历史', '生活', '励志', '财经', '青春', '都市', '悬疑', '军事', '玄幻', '科幻', '文学'],
+        categorys: ['全部', '原创', '再版'],
+        types: ['全部', '长篇著作', '短篇精选集', '文集', '其他'],
+        years: ['全部', '近现代', '当代'],
+        warrants: ['全部', '待授权', '已授权'],
+        ends: ['全部', '是', '否'],
+        totals: ['全部', '10万以内', '10-20万', '20-30万', '30-40万', '40-50万', '50万以上'],
+        areas: ['全部', '港台', '欧美', '日韩', '其他'],
+        themes2: ['全部', '古装', '年代', '青春', '都市', '军事', '玄幻', '惊悚', '穿越', '刑侦', '生活', '传奇'],
+        types2: ['全部', '长篇小说', '中篇小说', '短篇小说', '漫画'],
+        films: ['全版权', '电影', '电视剧', '网剧', '网大', '影视'],
+        areas2: ['全部', '大陆', '港台', '欧美', '日韩', '其他'],
+        olds: ['全部', '50前', '50后', '60后', '70后', '80后', '90后', '00后'],
+        sexs: ['全部', '男', '女'],
+        type3: ['全部', '作者', '编剧',],
+        recommends: ['全部', '是'],
+        isNavi: 1
+      }
+    },
+    methods: {
+      choseTheme (val) {
+        this.isClicked = val
+      },
+      choseCategory (val) {
+        this.isClicked2 = val
+      },
+      choseType (val) {
+        this.isClicked3 = val
+      },
+      choseYear (val) {
+        this.isClicked4 = val
+      },
+      choseWarrant (val) {
+        this.isClicked5 = val
+      },
+      choseIsEnd (val) {
+        this.isClicked6 = val
+      },
+      choseTotal (val) {
+        this.isClicked7 = val
+      },
+      clickScreen (val) {
+        this.isShow = true
+      },
+      cancel () {
+        this.isShow = false
+      },
+      submit () {
+        alert('你点击了查询确认')
+      },
+      clickSearch () {
+        alert('点击了搜索')
+      },
+      closeMask () {
+        this.isShow = false
+      },
+      closePop () {
+        this.isShow = false
+      },
+      gotoDomestic () { // 跳转到国内图书的搜索条件
+        this.isDomestic = true
+        this.isPop = false
+      },
+      gotoOverseas () {
+        this.isPop = false
+        this.isOverseas = true
+      },
+      gotoMovies () {
+        this.isPop = false
+        this.isMovie = true
+      },
+      gotoAuthor () {
+        this.isPop = false
+        this.isAuthor = true
+      },
+      clickTags (val, index) {
+        console.log(val)
+        console.log(index)
+        var str = val
+        switch (str) {
+          case 'theme':
+            // statements_1
+            this.isClicked = index
+            break
+          case 'category':
+            this.isClicked2 = index
+            break
+          case 'type':
+            this.isClicked3 = index
+            break
+          case 'year':
+            this.isClicked4 = index
+            break
+          case 'warrant':
+            this.isClicked5 = index
+            break
+          case 'end':
+            this.isClicked6 = index
+            break
+          case 'total':
+            this.isClicked7 = index
+            break
+          case 'area':
+            this.isClicked8 = index
+            break
+          case 'film':
+            this.isClicked9 = index
+            break
+          case 'old':
+            this.isClicked4 = index
+            break
+          case 'sex': 
+            this.isClicked10 = index
+            break
+          case 'recommend':
+            this.isClicked11 = index
+            break
+            areas
+sexs
+recommends
+          default:
+            break
+        }
+      },
+      clickNavi (val) {
+        this.isNavi = val
+      },
+      comeback () {
+        this.isPop = !this.isPop
+        this.isDomestic = false
+        this.isOverseas = false
+        this.isMovie = false
+        this.isAuthor = false
+        this.reset()
+      },
+      reset () {
+        this.isClicked = 0,
+        this.isClicked2 = 0,
+        this.isClicked3 = 0,
+        this.isClicked4 = 0,
+        this.isClicked5 = 0,
+        this.isClicked6 = 0,
+        this.isClicked7 = 0,
+        this.isClicked8 = 0,
+        this.isClicked9 = 0,
+        this.isClicked10 = 0,
+        this.isClicked11 = 0
+      },
+      confirm () {
+        alert('开始搜索')
+      },
+    }
+  });
+</script>
+<style>
+</style>

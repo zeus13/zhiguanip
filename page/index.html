@@ -15,7 +15,7 @@
   <div id="app">
     <h1>页面导航</h1>
     <div class="row" @click="gotoUser">个人中心</div>
-    <div class="row" @click="gotoGoods">作品分类</div>
+    <div class="row" @click="gotoClassify">综合查询</div>
     <div class="row" @click="gotoDomestic">国内作品</div>
     <div class="row" @click="gotoOverseas">港台海外</div>
     <div class="row" @click="gotoMovies">影视改编</div>
@@ -23,6 +23,8 @@
     <div class="row" @click="gotoAuthorInfo">作者介绍</div>
     <div class="row" @click="gotoRelease">发布作品1</div>
     <div class="row" @click="gotoRelease2">发布作品2</div>
+    <div class="row" @click="gotoCollection">我的收藏</div>
+    <div class="row" @click="gotoAuthorArea">作者专区</div>
   </div>
 </body>
 </html>
@@ -38,8 +40,8 @@
       gotoUser () {
         return window.location.href="user.html"
       },
-      gotoGoods () {
-        return window.location.href="classify.html"
+      gotoClassify () {
+        return window.location.href="classify2.html"
       },
       gotoDomestic () {
         return window.location.href="domestic.html"
@@ -61,6 +63,12 @@
       },
       gotoRelease2 () {
         return window.location.href="release2.html"
+      },
+      gotoCollection () {
+        return window.location.href="collection.html"
+      },
+      gotoAuthorArea () {
+        return window.location.href="authorArea.html"
       }
     }
   });

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../js/rem2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/base.css">
+    <!-- <link type="text/css" rel="stylesheet" href="../css/classify.css"> -->
+    <link type="text/css" rel="stylesheet" href="../css/collection.css">
+  <title>影视改编</title>
+  <!-- TODO 页面顶部点击作品分类，如国内版权、海外等，使用这个页面 -->
+</head>
+<body>
+  <div id="app">
+    <div class="content">
+      <div class="row"><span class="name">{{username}}</span><span style="vertical-align: middle;">的收藏</span></div>
+      <div class="list">
+        <div class="list-item clearfix">
+          <div class="item-img"><img src="http://www.zhiguanip.com/images/pic04.jpg" class="img"></div>
+          <div class="item-right">
+            <p class="goods-title">白夜追凶</p>
+            <p class="author">东野圭吾</p>
+            <div>
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30万字</span>
+            </div>
+            <div class="btn-check">查看</div>
+          </div>
+        </div>
+        <div class="list-item clearfix">
+          <div class="item-img"><img src="http://www.zhiguanip.com/images/pic04.jpg" class="img"></div>
+          <div class="item-right">
+            <p class="goods-title">白夜追凶</p>
+            <p class="author">东野圭吾</p>
+            <div>
+              <span class="bg-c">悬疑</span>
+              <span class="bg-c2">已授权</span>
+              <span class="bg-c3">30万字</span>
+            </div>
+            <div class="btn-check" @click="check">查看</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data () {
+      return {
+        username: '这是一位名字及其有长度的读者' // 这里获取用户的名字
+      }
+    },
+    methods: {
+      check () {
+        alert('应该跳转到书本详细页')
+      }
+    }
+  });
+</script>
+<style>
+.row {
+  padding: .15rem;
+  text-align: center;
+  background: #d81e06;
+  color: white;
+  border-bottom: 1px solid #cacaca;
+  font-size: .28rem;
+}
+.name {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.list {
+  padding: .15rem;
+}
+.list-item {
+  margin-bottom: .15rem;
+  border-bottom: 1px solid #cacaca;
+}
+.item-img {
+  float: left;
+  width: 1rem;
+}
+.img {
+  width: 100%;
+}
+.item-right {
+  float: left;
+  width: 4.8rem;
+  margin-left: .15rem;
+  line-height: .5rem;
+}
+.goods-title {
+  width: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .3rem;
+  /*line-height: .5rem;*/
+  color: #484848;
+}
+.author {
+  width: 4rem;
+  color: #808080;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .2rem;
+}
+.author::before {
+  content: '';
+  display: inline-block;
+  width: .22rem;
+  height: .22rem;
+  background: url('../images/icon-5.png') no-repeat;
+  background-size: 100%;
+}
+.btn-check {
+  float: right;
+  margin-top: -1.1rem;
+  padding: 0 .2rem;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  font-size: .24rem;
+}
+.bg-c {
+  color: rgb(242,161,47);
+  padding:0 .05rem;
+  background: rgba(242,161,47,0.15);
+  font-size: .2rem;
+}
+.bg-c2 {
+  padding:0 .05rem;
+  background: rgba(51,190,133,0.15);
+  color: rgb(51,190,133);
+  font-size: .2rem;
+}
+.bg-c3 {
+  color: #59abfd;
+  padding:0 .05rem;
+  background: rgba(89, 171, 253, 0.15);
+  font-size: .2rem;
+}
+</style>
