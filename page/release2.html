@@ -300,6 +300,30 @@
       <div class="btn-release" @click="submit">确认发布</div>
     </div>
     <div class="mask" v-show="isMaskShow" @click="closeMask"></div>
+
+    <!-- .net用，页面隐藏 -->
+    <div v-if="hidden">
+      <input type="text" v-model="classify" >
+      <input type="text" v-model="type" >
+      <input type="text" v-model="category" >
+      <input type="text" v-model="theme" >
+      <input type="text" v-model="year" >
+      <input type="text" v-model="warrant" >
+      <input type="text" v-model="end" >
+      <input type="text" v-model="total" >
+      <input type="text" v-model="area" >
+      <input type="text" v-model="film" >
+      <input type="text" v-model="introduce" >
+      <input type="text" v-model="content" >
+      <input type="text" v-model="synopsis" >
+      <input type="text" v-model="life" >
+      <input type="text" v-model="menu" >
+      <input type="text" v-model="sell" >
+      <input type="text" v-model="disseminate" >
+      <input type="text" v-model="title" >
+      <input type="text" v-model="signature" >
+    </div>
+
   </div>
 </body>
 </html>
@@ -352,7 +376,7 @@
         disseminate: '', // 宣传语
         title: '',
         signature: '',
-
+        hidden: false
       }
     },
     methods: {

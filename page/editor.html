@@ -9,21 +9,21 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script type="text/javascript" src="../js/rem2.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/base.css">
-    <link type="text/css" rel="stylesheet" href="../css/authorArea.css">
-  <title>作家专区</title>
+    <link type="text/css" rel="stylesheet" href="../css/editor.css">
+  <title>编辑作品</title>
 </head>
 <body>
   <div id="app">
-    <div class="top">作家专区<img src="../images/icon-12.png" class="img"></div>
     <div class="content">
-      <div class="tip" v-if="isHave">您还没有开始上传或开始写作作品哦~</div>
-      <div class="row"  @click="gotoWorkManagement">
-        <span>白夜行作品的名字</span>
-        <span class="row-right">编辑</span>
-      </div>
-      <div class="row" @click="gotoWorkManagement">
-        <span>短歌行作品的名字</span>
-        <span class="row-right">编辑</span>
+      <div class="top">新增章节</div>
+      <div class="editor-zoom">
+        <div class="title">
+          <input type="text" class="input" placeholder="请输入章节标题">
+        </div>
+        <div class="edit-content">
+          <textarea></textarea>
+        </div>
+        <div class="btn-save" @click="save">发&nbsp;&nbsp;&nbsp;布</div>
       </div>
     </div>
   </div>
@@ -38,8 +38,8 @@
       }
     },
     methods: {
-      gotoWorkManagement () {
-        return window.location.href="workManagement.html"
+      save () {
+        alert('点击了发布')
       }
     }
   });

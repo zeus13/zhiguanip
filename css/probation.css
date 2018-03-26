@@ -1,0 +1,28 @@
+.content {
+  padding: .15rem;
+}
+.title {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .3rem;
+  font-weight: bold;
+}
+.subtitle {
+  width: 100%;
+  text-align: center;
+  font-size: .22rem;
+  color: #cacaca;
+}
+.text {
+  margin-top: .5rem;
+  padding: 0 .25rem;
+  font-size: .24rem;
+  padding-bottom: .8rem;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+}

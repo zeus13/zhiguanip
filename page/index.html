@@ -14,6 +14,7 @@
 <body>
   <div id="app">
     <h1>页面导航</h1>
+    <h2>此页面只用于测试，方便查看页面</h2>
     <div class="row" @click="gotoUser">个人中心</div>
     <div class="row" @click="gotoClassify">综合查询</div>
     <div class="row" @click="gotoDomestic">国内作品</div>
@@ -21,10 +22,13 @@
     <div class="row" @click="gotoMovies">影视改编</div>
     <div class="row" @click="gotoAuthor">作者编剧</div>
     <div class="row" @click="gotoAuthorInfo">作者介绍</div>
-    <div class="row" @click="gotoRelease">发布作品1</div>
+    <!-- <div class="row" @click="gotoRelease">发布作品1</div> -->
     <div class="row" @click="gotoRelease2">发布作品2</div>
     <div class="row" @click="gotoCollection">我的收藏</div>
-    <div class="row" @click="gotoAuthorArea">作者专区</div>
+    <div class="row" @click="gotoAuthorArea">作品专区</div>
+    <div class="row" @click="gotoWorkManagement">作品管理</div>
+    <div class="row" @click="gotoAdd">新增章节</div>
+    <div class="row" @click="gotoProbation">章节试读</div>
   </div>
 </body>
 </html>
@@ -69,6 +73,15 @@
       },
       gotoAuthorArea () {
         return window.location.href="authorArea.html"
+      },
+      gotoWorkManagement () {
+        return window.location.href="workManagement.html"
+      },
+      gotoAdd () {
+        return window.location.href="editor.html"
+      },
+      gotoProbation () {
+        return window.location.href="probation.html"
       }
     }
   });
@@ -77,6 +90,11 @@
 h1 {
   font-size: .3rem;
   font-weight: bold;
+  text-align: center;
+  margin-bottom: .2rem;
+}
+h2 {
+  width: 100%;
   text-align: center;
   margin-bottom: .2rem;
 }

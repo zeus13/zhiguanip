@@ -1,0 +1,43 @@
+.top {
+  padding: .15rem;
+  background: #d81e06;
+  font-size: .26rem;
+  color: white;
+  text-align: center;
+}
+.btn-save {
+  margin: .5rem 2rem;
+  padding: .1rem .2rem;
+  text-align: center;
+  background: #d81e06;
+  border-radius: 5px;
+  color: white;
+  font-size: .26rem;
+}
+.editor-zoom {
+  padding: .15rem;
+}
+.title {
+  width: 100%;
+  border-bottom: .5px solid #cacaca;
+}
+.input {
+  width: 100%;
+  padding: 0 .1rem;
+  line-height: .5rem;
+  font-size: .24rem;
+  outline: none;
+  border: none;
+}
+.edit-content {
+  margin-top: .2rem;
+  padding: .15rem;
+  border: 1px solid #cacaca;
+}
+textarea {
+  width: 100%;
+  min-height: 6rem;
+  border: none;
+  outline: none;
+  font-size: .22rem;
+}

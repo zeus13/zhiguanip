@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../js/rem2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/base.css">
+    <link type="text/css" rel="stylesheet" href="../css/workManagement.css">
+  <title>作品管理</title>
+</head>
+<body>
+  <div id="app">
+    <div class="content">
+      <div class="top">
+        <div class="header">
+          <img src="http://www.zhiguanip.com/UploadImg/small184978.jpg" class="img">
+          <p class="header-title">笑傲江湖</p>
+        </div>
+      </div>
+      <div class="zoom">
+        <div class="row" @click="gotoAdd">新增章节</div>
+        <div class="chapter-area"> 
+          <div class="title">已发章节</div>
+          <div class="chapter-row">
+            <div class="chapter-title">序</div>
+            <div class="chapter-content">
+              <span class="item">第一卷</span>
+              <span class="item">2018-3-26</span>
+            </div>
+          </div>
+          <div class="chapter-row">
+            <div class="chapter-title">初次见面</div>
+            <div class="chapter-content">
+              <span class="item">第一卷</span>
+              <span class="item">2018.3.26</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data () {
+      return {
+
+      }
+    },
+    methods: {
+      gotoAdd () {
+        return window.location.href="editor.html"
+      }
+    }
+  });
+</script>
