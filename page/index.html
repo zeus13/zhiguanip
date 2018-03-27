@@ -12,7 +12,7 @@
   <title>导航页</title>
 </head>
 <body>
-  <div id="app">
+  <div id="app" class="content">
     <h1>页面导航</h1>
     <h2>此页面只用于测试，方便查看页面</h2>
     <div class="row" @click="gotoUser">个人中心</div>
@@ -29,6 +29,7 @@
     <div class="row" @click="gotoWorkManagement">作品管理</div>
     <div class="row" @click="gotoAdd">新增章节</div>
     <div class="row" @click="gotoProbation">章节试读</div>
+    <div class="row" @click="gotoMessages">站内消息</div>
   </div>
 </body>
 </html>
@@ -82,11 +83,17 @@
       },
       gotoProbation () {
         return window.location.href="probation.html"
+      },
+      gotoMessages () {
+        return window.location.href="messages.html"
       }
     }
   });
 </script>
 <style>
+.content {
+  padding-bottom: .5rem;
+}
 h1 {
   font-size: .3rem;
   font-weight: bold;

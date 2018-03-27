@@ -77,4 +77,13 @@
   background: #d81e06;
   font-size: .22rem;
 }
+.btn-contact2 {
+  display: block;
+  margin: 0 2rem;
+  padding: .05rem .1rem;
+  background: #d81e06;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
 .fonts-03 { font-size: .3rem; }

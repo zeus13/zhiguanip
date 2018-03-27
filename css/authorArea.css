@@ -19,11 +19,11 @@
   text-align: center;
 }
 .row {
+  position: relative;
   margin-top: .25rem;
-  padding: .2rem .15rem;
-  font-size: .26rem;
+  padding: .15rem;
   background: white;
-  font-size: .28rem;
+  line-height: .35rem;
 }
 .row-right::after {
   content: '';
@@ -34,11 +34,13 @@
   border-bottom: 1px solid #808080;
   transform: rotate(-45deg);
   float: right;
-  margin-top: .1rem;
+  margin-top: 0.05rem;
   margin-right: .15rem;
 }
 .row-right {
-  float: right;
+  position: absolute;
+  top: .35rem;
+  right: .15rem;
   color: #808080;
 }
 .img {
@@ -46,4 +48,19 @@
   right: .15rem;
   width: .45rem;
   height: .45rem;
+}
+.title {
+  width: 4rem;
+  font-size: .28rem;
+}
+.subtitle {
+  width: 4rem;
+  font-size: .22rem;
+  color: #808080;
+}
+.row-right-item {
+  margin-right: .2rem;
+  padding: 0 .1rem;
+  border-radius: 5px;
+  color: #d81e06;
 }
