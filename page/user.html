@@ -20,10 +20,10 @@
       <div class="btn-binding">绑定用户</div>
     </div>
 
-    <div class="content">
+    <div class="content" v-show="isShow == 0">
       <div class="row"><img src="../images/icon-1.png" class="icons"><span class="ml-06">作品专区</span></div>
       <div class="row"><img src="../images/icon-3.png" class="icons"><span class="ml-06">我的收藏</span></div>
-      <div class="row"><img src="../images/icon-4.png" class="icons"><span class="ml-06">我的好友</span></div>
+      <div class="row" @click="gotoMyFriend"><img src="../images/icon-4.png" class="icons"><span class="ml-06">我的好友</span></div>
       <div class="row"><img src="../images/icon-4.png" class="icons"><span class="ml-06">发送消息</span></div>
       <div class="row"><img src="../images/icon-8.png" class="icons"><span class="ml-06">疑问解答</span></div>
       <div class="row-admin"><img src="../images/icon-8.png" class="icons"><span class="ml-06">管理中心</span></div>
@@ -78,7 +78,8 @@
   data () {
     return {
       isWriting: true,
-      isAdmin: false
+      isAdmin: false,
+      isShow: 0
     }
   },
   methods: {
@@ -91,8 +92,10 @@
         self.isAdmin = !self.isAdmin
         self.isWriting = false
       }
+    },
+    gotoMyFriend () {
+      return isShow = 1 // 显示我的好友
     }
   }
  });
 </script>
-

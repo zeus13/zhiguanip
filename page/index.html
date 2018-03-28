@@ -30,6 +30,8 @@
     <div class="row" @click="gotoAdd">新增章节</div>
     <div class="row" @click="gotoProbation">章节试读</div>
     <div class="row" @click="gotoMessages">站内消息</div>
+    <div class="row" @click="gotoCopyright">购买版权</div>
+    <div class="row" @click="gotoMyFriend">我的好友</div>
   </div>
 </body>
 </html>
@@ -86,6 +88,12 @@
       },
       gotoMessages () {
         return window.location.href="messages.html"
+      },
+      gotoCopyright () {
+        return window.location.href="copyright.html"
+      },
+      gotoMyFriend () {
+        return window.location.href="myFriend.html"
       }
     }
   });

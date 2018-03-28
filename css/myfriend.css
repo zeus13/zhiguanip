@@ -1,0 +1,40 @@
+.top {
+  padding: .15rem;
+  text-align: center;
+  color: white;
+  background: #d81e06;
+  line-height: .5rem;
+  font-size: .3rem;
+}
+.list {
+  padding: .15rem;
+}
+.list-item {
+  padding: .15rem 0;
+  border-bottom: 0.5px solid #cacaca;
+}
+.item-header {
+  width: .8rem;
+  height: .8rem;
+  float: left;
+}
+.img {
+  width: 100%;
+}
+.name {
+  float: left;
+  width: 4rem;
+  /*margin-top: .2rem;*/
+  margin-left: .15rem;
+  font-size: .26rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.time {
+  float: right;
+  margin-right: .15rem;
+  margin-top: .15rem;
+  font-size: .2rem;
+  color: #808080;
+}

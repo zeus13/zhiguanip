@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../js/rem2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/base.css">
+    <link type="text/css" rel="stylesheet" href="../css/copyright.css">
+  <title>购买版权</title>
+</head>
+<body>
+  <div id="app">
+    <div class="top">购买版权</div>
+    <div class="content">
+      <div class="title">
+        <div class="txt">标题</div>
+        <input type="text" class="input" placeholder="请输入消息标题" v-model="title">
+      </div>
+      <div class="text-zoom">
+        <textarea placeholder="请输入要发送的消息" v-model="message"></textarea>
+      </div>
+      <div class="btn-submit">确认发送</div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data () {
+      return {
+        isCheck: 1,
+        title: '',
+        message: '',
+        isReply: true
+      }
+    },
+    methods: {
+      click (val) {
+        this.isCheck = val
+      }
+    }
+  });
+</script>
