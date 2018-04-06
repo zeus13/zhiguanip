@@ -19,18 +19,19 @@
 }
 .list-item {
   margin-bottom: .15rem;
+  padding: .15rem 0;
   border-bottom: 1px solid #cacaca;
 }
 .item-img {
   float: left;
-  width: 1rem;
 }
 .img {
-  width: 100%;
+  width: 1.3rem;
+  height: 1.4rem;
 }
 .item-right {
   float: left;
-  width: 4.8rem;
+  width: 4.5rem;
   margin-left: .15rem;
   line-height: .5rem;
 }

@@ -19,6 +19,17 @@
         <img src="../images/apicloud-bg.png" class="bg-img">
       </div>
       <div class="row">
+        <form action="#" method="get">
+          <div class="cover">
+            <div class="btn-upload">
+              <img src="../images/icon-13.png" class="upload-img">
+              <input type="file" name="img" class="upload">
+            </div>
+          </div>
+          <div class="btn-submit" @click="uploadImg()">上传/修改封面</div>
+        </form>
+      </div>
+      <div class="row">
         <div class="row-title">作品名称</div>
         <input type="text" class="input" placeholder="请输入作品名称" v-model="title">
       </div>
@@ -30,6 +41,15 @@
           <span>是作者本人</span>
         </div>
       </div>
+<!--       <div class="row">
+        <form action="#" method="get">
+          <span class="cover-txt">上传封面</span>
+          <div class="cover">
+            <div class="btn-upload"><input type="file" name="img" class="upload"></div>
+          </div>
+          <div></div>
+        </form>
+      </div> -->
       <div class="row">
         <div class="row-title">作品分类</div>
         <div class="select" @click="clickClassify">
@@ -297,31 +317,32 @@
           </div>
         </div>
       </div>
+      
       <div class="btn-release" @click="submit">确认发布</div>
     </div>
     <div class="mask" v-show="isMaskShow" @click="closeMask"></div>
 
     <!-- .net用，页面隐藏 -->
     <div v-if="hidden">
-      <input type="text" v-model="classify" >
-      <input type="text" v-model="type" >
-      <input type="text" v-model="category" >
-      <input type="text" v-model="theme" >
-      <input type="text" v-model="year" >
-      <input type="text" v-model="warrant" >
-      <input type="text" v-model="end" >
-      <input type="text" v-model="total" >
-      <input type="text" v-model="area" >
-      <input type="text" v-model="film" >
-      <input type="text" v-model="introduce" >
-      <input type="text" v-model="content" >
-      <input type="text" v-model="synopsis" >
-      <input type="text" v-model="life" >
-      <input type="text" v-model="menu" >
-      <input type="text" v-model="sell" >
-      <input type="text" v-model="disseminate" >
-      <input type="text" v-model="title" >
-      <input type="text" v-model="signature" >
+      <input type="text" v-model="classifyNum" id="classifyNum">
+      <input type="text" v-model="typeNum" id="typeNum">
+      <input type="text" v-model="categoryNum" id="categoryNum">
+      <input type="text" v-model="themeNum" id="themeNum">
+      <input type="text" v-model="yearNum" id="yearNum">
+      <input type="text" v-model="warrantNum" id="warrantNum">
+      <input type="text" v-model="endNum" id="endNum">
+      <input type="text" v-model="totalNum" id="totalNum">
+      <input type="text" v-model="areaNum" id="areaNum">
+      <input type="text" v-model="filmNum" id="filmNum">
+      <input type="text" v-model="introduceNum" id="introduceNum">
+      <input type="text" v-model="contentNum" id="contentNum">
+      <input type="text" v-model="synopsisNum" id="synopsisNum">
+      <input type="text" v-model="lifeNum" id="lifeNum">
+      <input type="text" v-model="menuNum" id="menuNum">
+      <input type="text" v-model="sellNum" id="sellNum">
+      <input type="text" v-model="disseminateNum" id="disseminateNum">
+      <input type="text" v-model="titleNum" id="titleNum">
+      <input type="text" v-model="signatureNum" id="signatureNum">
     </div>
 
   </div>
@@ -376,7 +397,27 @@
         disseminate: '', // 宣传语
         title: '',
         signature: '',
-        hidden: false
+        hidden: false,
+        classifyNum: '',
+        typeNum: '',
+        categoryNum: '',
+        themeNum: '',
+        yearNum: '',
+        warrantNum: '',
+        endNum: '',
+        totalNum: '',
+        areaNum: '',
+        filmNum: '',
+        introduceNum: '',
+        contentNum: '',
+        synopsisNum: '',
+        lifeNum: '',
+        menuNum: '',
+        sellNum: '',
+        disseminateNum: '',
+        titleNum: '',
+        signatureNum: '',
+        isUp: true // 是否上传图片
       }
     },
     methods: {
@@ -402,6 +443,7 @@
       },
       choseClassify (val, num) {
         this.classify = val
+        this.classifyNum = num
         this.closeMask()
         console.log(val)
         console.log(num)
@@ -412,6 +454,7 @@
       },
       choseType (val, num) {
         this.type = val
+        this.typeNum = num
         this.closeMask()
         console.log(val)
         console.log(num)
@@ -422,6 +465,7 @@
       },
       choseCategory (val, num) {
         this.category = val
+        this.categoryNum = num
         this.closeMask()
       },
       clickTheme () {
@@ -430,6 +474,7 @@
       },
       choseTheme (val, num) {
         this.theme = val
+        this.themeNum = num
         this.closeMask()
       },
       clickYear () {
@@ -438,6 +483,7 @@
       },
       choseYear (val, num) {
         this.year = val
+        this.yearNun = num
         this.closeMask()
       },
       clickWarrant () {
@@ -446,6 +492,7 @@
       },
       choseWarrant (val, num) {
         this.warrant = val
+        this.warrantNum = num
         this.closeMask()
       },
       clickEnd () {
@@ -454,6 +501,7 @@
       },
       choseEnd (val, num) {
         this.end = val
+        this.endNum = val
         this.closeMask()
       },
       clickTotal () {
@@ -462,6 +510,7 @@
       },
       choseTotal (val, num) {
         this.total = val
+        this.totalNum = num
         this.closeMask()
       },
       clickArea () {
@@ -470,6 +519,7 @@
       },
       choseArea (val, num) {
         this.area = val
+        this.areaNum = num
         this.closeMask()
       },
       clickFilm () {
@@ -478,6 +528,7 @@
       },
       choseFilm (val, num) {
         this.film = val
+        this.filmNum = num
         this.closeMask()
       },
       submit () {
@@ -524,6 +575,9 @@
         console.log('作品目录')
         console.log('卖点分析')
         console.log('宣传语')
+      },
+      uploadImg () {
+        alert('确认上传封面')
       }
     }
   });

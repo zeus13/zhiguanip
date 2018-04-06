@@ -1,0 +1,390 @@
+<!-- <%@ page language="C#" autoeventwireup="true" inherits="zhiguan_wapindex, App_Web_rwecwxkm" %> -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+<link rel="stylesheet" type="text/css" href="../css/style_new.css" />
+<link rel="stylesheet" type="text/css" href="../css/aui-slide.css" />
+<title>首页</title>
+  <style>
+        .aui-searchbar {
+            background: transparent;
+        }
+        .aui-bar-nav .aui-searchbar-input {
+            background-color: #ffffff;
+        }
+        .aui-bar-light .aui-searchbar-input {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+  <div id="app">
+    <header class="aui-bar aui-bar-nav aui-bar-light">
+        <!-- <span class="aui-pull-left aui-btn">
+          <select name="" class="sel_ico">
+            <option>地区</option>
+            <option>南宁</option>
+            <option>北海</option>
+          </select>
+        </span> -->
+        <span class="sel_ico" @click="checked">{{checkedName}}</span>
+        <div v-show="isChecked" class="select-l">
+          <div class="item" v-for="(item, index) in checkes" :key="index" @click="checkItem(item, index)">{{item}}</div>
+        </div>
+<div class="aui-title" style="left:3.8rem; right: 0.5rem; top: 0;">
+            <div class="aui-searchbar" id="search">
+                <div class="aui-searchbar-input aui-border-radius">
+                    <i class="aui-iconfont aui-icon-search"></i>
+                    <input type="search" placeholder="请输入搜索内容" id="search-input">
+                    <div class="aui-searchbar-clear-btn">
+                        <i class="aui-iconfont aui-icon-close"></i>
+                    </div>
+                </div>
+                <div class="aui-searchbar-btn" tapmode>取消</div>
+            </div>
+        </div>
+    </header>
+<div class="aui-content con">
+<div id="aui-slide3">
+        <div class="aui-slide-wrap" >
+            <div class="aui-slide-node bg-dark">
+            <img src="../images/img01.jpg" ></div>
+            <div class="aui-slide-node bg-dark">
+              <img src="../images/img02.jpg" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+              <img src="../images/img03.jpg" />
+            </div>
+        </div>
+        <div class="aui-slide-page-wrap"><!--分页容器--></div>
+    </div>
+<div class="i_nav">
+<section class="aui-grid">
+        <div class="aui-row">
+            <div class="aui-col-xs-4 ">
+              <a href="#" class="g_ico"><img src="../images/nav01.png" ></a>
+              <div class="aui-grid-label">国内图书</div>
+            </div>
+      <div class="aui-col-xs-4">
+               <a href="#" class="g_ico"><img src="../images/nav02.png" ></a>
+                <div class="aui-grid-label">港台海外</div>
+            </div>
+      <div class="aui-col-xs-4">
+              <a href="#" class="g_ico"><img src="../images/nav03.png" ></a>
+                <div class="aui-grid-label">影视改编</div>
+            </div>
+      <div class="aui-col-xs-4">
+               <a href="#" class="g_ico"><img src="../images/nav04.png" ></a>
+                <div class="aui-grid-label">作者编剧</div>
+            </div>
+      <div class="aui-col-xs-4">
+                <a href="#" class="g_ico"><img src="../images/nav05.png" ></a>
+                <div class="aui-grid-label">发布作品</div>
+            </div>
+      <div class="aui-col-xs-4">
+                <a href="#" class="g_ico"><img src="../images/nav06.png" ></a>
+                <div class="aui-grid-label">客服中心</div>
+            </div>
+            
+        </div>
+    </section>
+</div>
+
+<div class="body_bg">
+    <div class="title01"><span class="more"><a href="#">查看更多 ></a></span>国内图书</div>
+    <div class="aui-row aui-row-padded padd02">
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic01.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">水彩私享课</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic02.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经典</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic03.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经典</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+         <div class="aui-col-xs-4 line padd01"> <img src="../images/pic01.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">水彩私享课</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic02.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经典</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic03.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经典</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="body_bg">
+    <div class="title01"><span class="more"><a href="#">查看更多 ></a></span>港台海外</div>
+    <div class="aui-row aui-row-padded padd02">
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic01.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">水彩私享课</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic02.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic03.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+         <div class="aui-col-xs-4 line padd01"> <img src="../images/pic01.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">水彩私享课</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic02.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic03.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="body_bg">
+    <div class="title01"><span class="more"><a href="#">查看更多 ></a></span>影视改编</div>
+    <div class="aui-row aui-row-padded padd02">
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic01.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">水彩私享课</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic02.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic03.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+         <div class="aui-col-xs-4 line padd01"> <img src="../images/pic01.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">水彩私享课</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic02.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-col-xs-4 line padd01"> <img src="../images/pic03.jpg" >
+        <div class="tiyan">
+          <h3><a href="#">世界绘画经</a></h3>
+          <div class="t_y01 ">
+            <p class="col03">作者:冯友兰</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="demo"></div>
+<footer class="aui-bar aui-bar-tab footer_line" id="footer">
+  <div class="aui-bar-tab-item aui-active" tapmode> <i class="tb1"></i>
+    <div class="aui-bar-tab-label">首页</div>
+  </div>
+  <div class="aui-bar-tab-item" tapmode> <i class="tb2"></i>
+    <div class="aui-bar-tab-label">作品分类</div>
+  </div>
+  <div class="aui-bar-tab-item" tapmode>
+    <i class="tb3"></i>
+    <div class="aui-bar-tab-label">发布作品</div>
+  </div>
+  <div class="aui-bar-tab-item" tapmode>
+    <i class="tb4"></i>
+    <div class="aui-bar-tab-label">个人中心</div>
+  </div>
+</footer>
+</div>
+</body>
+<script type="text/javascript" src="../script/aui-slide.js"></script>
+<script type="text/javascript">
+    var slide = new auiSlide({
+        container: document.getElementById("aui-slide"),
+        // "width":300,
+        "height": 140,
+        "speed": 300,
+        "pageShow": true,
+        "pageStyle": 'dot',
+        "loop": true,
+        'dotPosition': 'center',
+        currentPage: currentFun
+    })
+
+    function currentFun(index) {
+        console.log(index);
+    }
+    var slide2 = new auiSlide({
+        container: document.getElementById("aui-slide2"),
+        // "width":300,
+        "height": 140,
+        "speed": 300,
+        "autoPlay": 0, //自动播放
+        "pageShow": true,
+        "loop": true,
+        "pageStyle": 'dot',
+        'dotPosition': 'center'
+    })
+    var slide3 = new auiSlide({
+        container: document.getElementById("aui-slide3"),
+        // "width":300,
+        "height": 140,
+        "speed": 500,
+        "autoPlay": 3000, //自动播放
+        "loop": true,
+        "pageShow": true,
+        "pageStyle": 'line',
+        'dotPosition': 'center'
+    })
+    console.log(slide3.pageCount());
+</script>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript" src="../script/aui-tab.js" ></script>
+<script type="text/javascript">
+    apiready = function () {
+        api.parseTapmode();
+    }
+    var tab = new auiTab({
+        element: document.getElementById("footer")
+    }, function (ret) {
+        console.log(ret);
+        if (ret) {
+            document.getElementById("demo").textContent = ret.index;
+        }
+    });
+</script>
+</html>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data () {
+      return {
+        isChecked: false,
+        checkedName: '请选择',
+        checkes: ['按作者名称', '按作品名称'],
+      }
+    },
+    methods: {
+      checked () {
+        this.isChecked = !this.isChecked
+      },
+      checkItem (val, num) {
+        this.checkedName = val
+        this.isChecked = !this.isChecked
+      }
+    }
+  });
+</script>
+<style>
+.sel_ico {
+  text-align: center;
+  width: 4rem;
+  background: none;
+}
+.sel_ico::after {
+  content:'';
+  display: inline-block;
+  width: .4rem;
+  height: .4rem;
+  transform: rotate(45deg);
+  border-right: 1px solid #cacaca;
+  border-bottom: 1px solid #cacaca;
+  position: relative;
+  top: -.1rem;
+  left: .3rem;
+}
+.select-l {
+  position: absolute;
+  top: 1.5rem;
+  left: .5rem;
+  border: 1px solid #cacaca;
+  background: white;
+}
+.item {
+  padding: .1rem;
+  font-size: .6rem;
+  color: #666;
+}
+</style>
